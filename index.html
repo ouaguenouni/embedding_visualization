@@ -6,8 +6,6 @@
     <title>Word Embedding Explorer</title>
     <!-- Plotly.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.24.2/plotly.min.js"></script>
-    <!-- Optional: Add PapaParse for CSV parsing if needed -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <!-- JS-YAML for parsing the config file -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
     <style>
@@ -428,7 +426,7 @@
         // Function to generate sample data
         function generateSampleData() {
             console.log("Generating sample data for demonstration");
-            // Similar to before, but modified to include metadata
+            // Create a sample dataset with common words
             const sampleWords = [
                 "man", "woman", "king", "queen", "prince", "princess", "boy", "girl",
                 "dog", "cat", "bird", "fish", "horse", "cow", "pig", "sheep",
@@ -488,4 +486,291 @@
             const similarWords = {};
             sampleWords.forEach((word, i) => {
                 // Find the cluster this word belongs to
-                const cl
+                const clusterIndex = clusters.findIndex(cluster => cluster.includes(i));
+                if (clusterIndex !== -1) {
+                    // Get other words from the same cluster
+                    const similars = clusters[clusterIndex]
+                        .filter(idx => idx !== i)
+                        .map(idx => ({
+                            word: sampleWords[idx],
+                            similarity: (0.5 + Math.random() * 0.5).toFixed(3)
+                        }))
+                        .sort((a, b) => b.similarity - a.similarity)
+                        .slice(0, 5);
+                    
+                    similarWords[word] = similars;
+                }
+            });
+            
+            return {
+                words: sampleWords,
+                coordinates: coordinates,
+                frequencies: frequencies,
+                similarWords: similarWords,
+                metadata: {
+                    modelType: "SampleModel",
+                    vectorDimension: 100,
+                    totalWords: 64,
+                    filteredWords: 64,
+                    displayWords: 64,
+                    tsnePerplexity: 30
+                }
+            };
+        }
+
+        // Function to update the visualization based on user parameters
+        function updateVisualization() {
+            if (!embeddingData) {
+                console.error("No embedding data available");
+                return;
+            }
+            
+            // Get current parameters
+            const numWords = parseInt(document.getElementById('num-words').value);
+            
+            // Limit to the requested number of words
+            const words = embeddingData.words.slice(0, numWords);
+            const coordinates = embeddingData.coordinates.slice(0, numWords);
+            const frequencies = embeddingData.frequencies ? 
+                embeddingData.frequencies.slice(0, numWords) : 
+                words.map(() => 1);
+            
+            // Extract X and Y coordinates
+            const x = coordinates.map(coord => coord[0]);
+            const y = coordinates.map(coord => coord[1]);
+            
+            // Normalize sizes based on frequency
+            const maxFreq = Math.max(...frequencies);
+            const minFreq = Math.min(...frequencies);
+
+            // Normalize sizes based on frequency
+            const maxFreq = Math.max(...frequencies);
+            const minFreq = Math.min(...frequencies);
+            const sizes = frequencies.map(freq => 
+                10 + ((freq - minFreq) / (maxFreq - minFreq || 1)) * 25
+            );
+            
+            // Create the trace for Plotly
+            const trace = {
+                x: x,
+                y: y,
+                mode: 'markers+text',
+                type: 'scatter',
+                text: words,
+                textposition: 'top center',
+                textfont: {
+                    family: 'Arial, sans-serif',
+                    size: 12,
+                    color: '#333'
+                },
+                marker: {
+                    size: sizes,
+                    opacity: 0.8,
+                    color: '#3498db',
+                    line: {
+                        color: '#2980b9',
+                        width: 1
+                    }
+                },
+                hoverinfo: 'text',
+                hovertext: words.map((word, i) => 
+                    `${word}<br>Frequency: ${frequencies[i]}`
+                )
+            };
+            
+            // Define the layout
+            const layout = {
+                title: `Word Embedding Map (${embeddingData.metadata?.modelType || 'Unknown Model'})`,
+                titlefont: {
+                    size: 24
+                },
+                hovermode: 'closest',
+                xaxis: {
+                    title: 't-SNE dimension 1',
+                    zeroline: false,
+                    showgrid: true,
+                    showline: true
+                },
+                yaxis: {
+                    title: 't-SNE dimension 2',
+                    zeroline: false,
+                    showgrid: true,
+                    showline: true
+                },
+                margin: {
+                    l: 50,
+                    r: 50,
+                    b: 50,
+                    t: 80,
+                    pad: 4
+                }
+            };
+            
+            // Create the plot
+            Plotly.newPlot('embedding-plot', [trace], layout, {responsive: true});
+            
+            // Add click event for word selection
+            document.getElementById('embedding-plot').on('plotly_click', function(data) {
+                const pointIndex = data.points[0].pointIndex;
+                const selectedWord = words[pointIndex];
+                
+                // Display word information
+                displayWordInfo(selectedWord);
+            });
+        }
+
+        // Function to display information about a specific word
+        function displayWordInfo(word) {
+            if (!embeddingData || !embeddingData.words.includes(word)) {
+                document.getElementById('selected-word').textContent = 'Word not found in dataset';
+                document.getElementById('similar-words').innerHTML = '';
+                return;
+            }
+            
+            // Display the selected word
+            document.getElementById('selected-word').textContent = word;
+            
+            // Display similar words if available
+            const similarWordsContainer = document.getElementById('similar-words');
+            similarWordsContainer.innerHTML = '';
+            
+            if (embeddingData.similarWords && embeddingData.similarWords[word]) {
+                const similarList = embeddingData.similarWords[word];
+                
+                if (similarList.length === 0) {
+                    similarWordsContainer.textContent = 'No similar words found';
+                } else {
+                    similarList.forEach(similar => {
+                        const similarWordElem = document.createElement('div');
+                        similarWordElem.className = 'similar-word';
+                        similarWordElem.textContent = `${similar.word} (${similar.similarity})`;
+                        similarWordElem.addEventListener('click', () => {
+                            // When clicking on a similar word, show info for that word
+                            displayWordInfo(similar.word);
+                            
+                            // Find the word in the visualization
+                            const wordIndex = embeddingData.words.indexOf(similar.word);
+                            if (wordIndex !== -1 && wordIndex < parseInt(document.getElementById('num-words').value)) {
+                                // Get coordinates for the word
+                                const coords = embeddingData.coordinates[wordIndex];
+                                
+                                // Update layout to focus on the word
+                                Plotly.relayout('embedding-plot', {
+                                    'xaxis.range': [coords[0] - 5, coords[0] + 5],
+                                    'yaxis.range': [coords[1] - 5, coords[1] + 5]
+                                });
+                            }
+                        });
+                        similarWordsContainer.appendChild(similarWordElem);
+                    });
+                }
+            } else {
+                similarWordsContainer.textContent = 'Similar word data not available';
+            }
+        }
+
+        // Function to find a word in the visualization
+        function findWord(word) {
+            if (!embeddingData) return;
+            
+            const wordIndex = embeddingData.words.findIndex(w => 
+                w.toLowerCase() === word.toLowerCase()
+            );
+            
+            if (wordIndex !== -1 && wordIndex < parseInt(document.getElementById('num-words').value)) {
+                // Get coordinates for the word
+                const coords = embeddingData.coordinates[wordIndex];
+                
+                // Display word information
+                displayWordInfo(embeddingData.words[wordIndex]);
+                
+                // Update layout to focus on the word
+                Plotly.relayout('embedding-plot', {
+                    'xaxis.range': [coords[0] - 5, coords[0] + 5],
+                    'yaxis.range': [coords[1] - 5, coords[1] + 5]
+                });
+                
+                return true;
+            }
+            
+            return false;
+        }
+
+        // Initialize the application
+        async function initializeApp() {
+            try {
+                // Load config
+                const config = await loadConfig();
+                configData = config;
+                
+                // Populate model cards
+                populateModelCards(config.models);
+                
+                // Load the first model
+                if (config.models && config.models.length > 0) {
+                    loadEmbeddingData(config.models[0].file);
+                } else {
+                    // No models found, use sample data
+                    embeddingData = generateSampleData();
+                    updateVisualization();
+                    document.getElementById('embedding-plot').classList.remove('loading');
+                }
+            } catch (error) {
+                console.error("Error initializing app:", error);
+                // Fall back to sample data
+                embeddingData = generateSampleData();
+                updateVisualization();
+                document.getElementById('embedding-plot').classList.remove('loading');
+            }
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize app
+            initializeApp();
+            
+            // Event listeners for controls
+            document.getElementById('search-button').addEventListener('click', function() {
+                const searchTerm = document.getElementById('search-input').value.trim();
+                if (!searchTerm) return;
+                
+                if (!findWord(searchTerm)) {
+                    alert(`Word "${searchTerm}" not found among the ${document.getElementById('num-words').value} most frequent words.`);
+                }
+            });
+            
+            document.getElementById('search-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    document.getElementById('search-button').click();
+                }
+            });
+            
+            document.getElementById('similarity-button').addEventListener('click', function() {
+                const word = document.getElementById('similarity-input').value.trim();
+                if (!word) return;
+                
+                if (!findWord(word)) {
+                    alert(`Word "${word}" not found among the ${document.getElementById('num-words').value} most frequent words.`);
+                }
+            });
+            
+            document.getElementById('similarity-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    document.getElementById('similarity-button').click();
+                }
+            });
+            
+            document.getElementById('update-viz').addEventListener('click', function() {
+                updateVisualization();
+            });
+            
+            document.getElementById('reset-view').addEventListener('click', function() {
+                Plotly.relayout('embedding-plot', {
+                    'xaxis.autorange': true,
+                    'yaxis.autorange': true
+                });
+            });
+        });
+    </script>
+</body>
+</html>

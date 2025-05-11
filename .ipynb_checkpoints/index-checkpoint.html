@@ -6,6 +6,8 @@
     <title>Word Embedding Explorer</title>
     <!-- Plotly.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.24.2/plotly.min.js"></script>
+    <!-- JS-YAML for parsing the config file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -55,6 +57,51 @@
             font-size: 1.2em;
             margin-bottom: 10px;
             color: #2c3e50;
+        }
+        .model-selector {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .model-selector h3 {
+            margin-top: 0;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        .model-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .model-card {
+            flex: 1;
+            min-width: 250px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .model-card:hover {
+            border-color: #3498db;
+            background-color: #f7fbfe;
+        }
+        .model-card.active {
+            border-color: #3498db;
+            background-color: #ebf5fb;
+        }
+        .model-card h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        .model-card p {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 0;
         }
         .plot-container {
             background-color: white;
@@ -112,6 +159,20 @@
             border-radius: 15px;
             font-size: 14px;
         }
+        .metadata {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        .metadata-item {
+            display: flex;
+            margin-bottom: 5px;
+        }
+        .metadata-label {
+            font-weight: bold;
+            width: 180px;
+        }
         footer {
             text-align: center;
             padding: 20px;
@@ -125,6 +186,17 @@
             font-size: 18px;
             color: #7f8c8d;
         }
+        .similarity-search {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .similarity-search input {
+            flex-grow: 1;
+        }
+        .similarity-search button {
+            flex-shrink: 0;
+        }
     </style>
 </head>
 <body>
@@ -136,6 +208,13 @@
     </header>
 
     <div class="container">
+        <div class="model-selector">
+            <h3>Select Embedding Model</h3>
+            <div class="model-cards" id="model-cards">
+                <div class="loading">Loading available models...</div>
+            </div>
+        </div>
+
         <div class="controls">
             <div class="control-group">
                 <h3>Search</h3>
@@ -172,17 +251,27 @@
         <div class="plot-container">
             <div id="embedding-plot" class="loading">
                 <p>Loading visualization...</p>
-                <p>If this takes too long, check the browser console for any errors or try reducing the number of words.</p>
+                <p>If this takes too long, check the browser console for any errors.</p>
             </div>
         </div>
 
         <div class="word-info">
             <h3>Word Information</h3>
-            <p>Click on any word in the visualization to see more information.</p>
+            <p>Click on any word in the visualization or use the search below to see more information.</p>
             <div id="selected-word">No word selected</div>
+            
+            <div class="similarity-search">
+                <input type="text" id="similarity-input" placeholder="Enter a word to find similar words...">
+                <button id="similarity-button">Find Similar Words</button>
+            </div>
+            
             <div>
                 <h4>Similar words:</h4>
-                <div id="similar-words">Select a word to see similar words</div>
+                <div id="similar-words">Select or enter a word to see similar words</div>
+            </div>
+            
+            <div class="metadata" id="model-metadata">
+                <!-- Model metadata will be displayed here -->
             </div>
         </div>
     </div>
@@ -192,37 +281,152 @@
     </footer>
 
     <script>
-        // This is where we'll load the pre-processed word embedding data
-        // For GitHub Pages, we'll use a JSON file that contains the t-SNE output
-
-        // We'll store the embedding data here
+        // Global variables
         let embeddingData = null;
-        let currentPlot = null;
+        let configData = null;
+        let currentModelFile = null;
 
-        // Function to initialize the visualization
-        async function initVisualization() {
+        // Fetch the config file
+        async function loadConfig() {
             try {
-                // In a real implementation, load pre-processed t-SNE data from a JSON file
-                // For GitHub Pages, we've pre-computed the t-SNE in Python and saved as JSON
-                const response = await fetch('embedding_data.json');
-                embeddingData = await response.json();
+                const response = await fetch('config.yaml');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
                 
-                // Create the initial plot
-                updateVisualization();
-                
-                document.querySelector('.loading').classList.remove('loading');
+                const yamlText = await response.text();
+                const config = jsyaml.load(yamlText);
+                return config;
             } catch (error) {
-                console.error("Error loading embedding data:", error);
-                // If real data fails to load, use sample data for demonstration
-                embeddingData = generateSampleData();
-                updateVisualization();
-                document.querySelector('.loading').classList.remove('loading');
+                console.error("Error loading config:", error);
+                // Return default config
+                return {
+                    ignore: [],
+                    models: [
+                        {
+                            name: "Default Model",
+                            file: "embedding_data.json",
+                            description: "Default word embedding model"
+                        }
+                    ]
+                };
             }
         }
 
-        // Function to generate sample data for demonstration
+        // Function to populate model cards
+        function populateModelCards(models) {
+            const container = document.getElementById('model-cards');
+            container.innerHTML = '';
+            
+            if (!models || models.length === 0) {
+                container.innerHTML = '<p>No embedding models found. Please check your configuration.</p>';
+                return;
+            }
+            
+            models.forEach((model, index) => {
+                const card = document.createElement('div');
+                card.className = 'model-card';
+                card.dataset.file = model.file;
+                card.innerHTML = `
+                    <h4>${model.name}</h4>
+                    <p>${model.description || 'No description available'}</p>
+                `;
+                
+                card.addEventListener('click', () => {
+                    // Remove active class from all cards
+                    document.querySelectorAll('.model-card').forEach(c => {
+                        c.classList.remove('active');
+                    });
+                    
+                    // Add active class to selected card
+                    card.classList.add('active');
+                    
+                    // Load the selected model
+                    loadEmbeddingData(model.file);
+                });
+                
+                container.appendChild(card);
+                
+                // Select the first model by default
+                if (index === 0) {
+                    card.classList.add('active');
+                    currentModelFile = model.file;
+                }
+            });
+        }
+
+        // Function to display model metadata
+        function displayModelMetadata(metadata) {
+            const container = document.getElementById('model-metadata');
+            
+            if (!metadata) {
+                container.style.display = 'none';
+                return;
+            }
+            
+            container.style.display = 'block';
+            container.innerHTML = '<h4>Model Information:</h4>';
+            
+            const metadataItems = [
+                { label: 'Model Type', value: metadata.modelType || 'Unknown' },
+                { label: 'Vector Dimension', value: metadata.vectorDimension || 'Unknown' },
+                { label: 'Total Words in Model', value: metadata.totalWords || 'Unknown' },
+                { label: 'Words After Filtering', value: metadata.filteredWords || 'Unknown' },
+                { label: 'Words Displayed', value: metadata.displayWords || 'Unknown' },
+                { label: 't-SNE Perplexity', value: metadata.tsnePerplexity || 'Unknown' }
+            ];
+            
+            metadataItems.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'metadata-item';
+                div.innerHTML = `
+                    <span class="metadata-label">${item.label}:</span>
+                    <span>${item.value}</span>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Function to load embedding data
+        async function loadEmbeddingData(filename) {
+            try {
+                document.getElementById('embedding-plot').classList.add('loading');
+                
+                const response = await fetch(filename);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                
+                embeddingData = await response.json();
+                currentModelFile = filename;
+                
+                // Update the UI
+                updateVisualization();
+                displayModelMetadata(embeddingData.metadata);
+                document.getElementById('embedding-plot').classList.remove('loading');
+                
+                console.log(`Loaded embedding data from ${filename} with ${embeddingData.words.length} words`);
+            } catch (error) {
+                console.error(`Error loading embedding data from ${filename}:`, error);
+                document.getElementById('embedding-plot').innerHTML = `
+                    <p>Error loading embedding data. Please check that the file "${filename}" exists and is valid JSON.</p>
+                    <p>Error: ${error.message}</p>
+                `;
+                document.getElementById('embedding-plot').classList.remove('loading');
+                
+                // Use sample data if available
+                if (typeof generateSampleData === 'function') {
+                    console.log('Using sample data instead');
+                    embeddingData = generateSampleData();
+                    updateVisualization();
+                }
+            }
+        }
+
+        // Function to generate sample data
         function generateSampleData() {
-            // Sample words and coordinates to demonstrate functionality
+            console.log("Generating sample data for demonstration");
+            // Create a sample dataset with common words
             const sampleWords = [
                 "man", "woman", "king", "queen", "prince", "princess", "boy", "girl",
                 "dog", "cat", "bird", "fish", "horse", "cow", "pig", "sheep",
@@ -302,13 +506,24 @@
                 words: sampleWords,
                 coordinates: coordinates,
                 frequencies: frequencies,
-                similarWords: similarWords
+                similarWords: similarWords,
+                metadata: {
+                    modelType: "SampleModel",
+                    vectorDimension: 100,
+                    totalWords: 64,
+                    filteredWords: 64,
+                    displayWords: 64,
+                    tsnePerplexity: 30
+                }
             };
         }
 
         // Function to update the visualization based on user parameters
         function updateVisualization() {
-            if (!embeddingData) return;
+            if (!embeddingData) {
+                console.error("No embedding data available");
+                return;
+            }
             
             // Get current parameters
             const numWords = parseInt(document.getElementById('num-words').value);
@@ -327,8 +542,12 @@
             // Normalize sizes based on frequency
             const maxFreq = Math.max(...frequencies);
             const minFreq = Math.min(...frequencies);
+
+            // Normalize sizes based on frequency
+            const maxFreq = Math.max(...frequencies);
+            const minFreq = Math.min(...frequencies);
             const sizes = frequencies.map(freq => 
-                10 + ((freq - minFreq) / (maxFreq - minFreq)) * 25
+                10 + ((freq - minFreq) / (maxFreq - minFreq || 1)) * 25
             );
             
             // Create the trace for Plotly
@@ -361,7 +580,7 @@
             
             // Define the layout
             const layout = {
-                title: 'Word Embedding Map',
+                title: `Word Embedding Map (${embeddingData.metadata?.modelType || 'Unknown Model'})`,
                 titlefont: {
                     size: 24
                 },
@@ -396,73 +615,154 @@
                 const selectedWord = words[pointIndex];
                 
                 // Display word information
-                document.getElementById('selected-word').textContent = selectedWord;
+                displayWordInfo(selectedWord);
+            });
+        }
+
+        // Function to display information about a specific word
+        function displayWordInfo(word) {
+            if (!embeddingData || !embeddingData.words.includes(word)) {
+                document.getElementById('selected-word').textContent = 'Word not found in dataset';
+                document.getElementById('similar-words').innerHTML = '';
+                return;
+            }
+            
+            // Display the selected word
+            document.getElementById('selected-word').textContent = word;
+            
+            // Display similar words if available
+            const similarWordsContainer = document.getElementById('similar-words');
+            similarWordsContainer.innerHTML = '';
+            
+            if (embeddingData.similarWords && embeddingData.similarWords[word]) {
+                const similarList = embeddingData.similarWords[word];
                 
-                // Display similar words if available
-                const similarWordsContainer = document.getElementById('similar-words');
-                similarWordsContainer.innerHTML = '';
-                
-                if (embeddingData.similarWords && embeddingData.similarWords[selectedWord]) {
-                    embeddingData.similarWords[selectedWord].forEach(similar => {
+                if (similarList.length === 0) {
+                    similarWordsContainer.textContent = 'No similar words found';
+                } else {
+                    similarList.forEach(similar => {
                         const similarWordElem = document.createElement('div');
                         similarWordElem.className = 'similar-word';
                         similarWordElem.textContent = `${similar.word} (${similar.similarity})`;
+                        similarWordElem.addEventListener('click', () => {
+                            // When clicking on a similar word, show info for that word
+                            displayWordInfo(similar.word);
+                            
+                            // Find the word in the visualization
+                            const wordIndex = embeddingData.words.indexOf(similar.word);
+                            if (wordIndex !== -1 && wordIndex < parseInt(document.getElementById('num-words').value)) {
+                                // Get coordinates for the word
+                                const coords = embeddingData.coordinates[wordIndex];
+                                
+                                // Update layout to focus on the word
+                                Plotly.relayout('embedding-plot', {
+                                    'xaxis.range': [coords[0] - 5, coords[0] + 5],
+                                    'yaxis.range': [coords[1] - 5, coords[1] + 5]
+                                });
+                            }
+                        });
                         similarWordsContainer.appendChild(similarWordElem);
                     });
-                } else {
-                    similarWordsContainer.textContent = 'Similar word data not available';
                 }
-            });
+            } else {
+                similarWordsContainer.textContent = 'Similar word data not available';
+            }
+        }
+
+        // Function to find a word in the visualization
+        function findWord(word) {
+            if (!embeddingData) return;
+            
+            const wordIndex = embeddingData.words.findIndex(w => 
+                w.toLowerCase() === word.toLowerCase()
+            );
+            
+            if (wordIndex !== -1 && wordIndex < parseInt(document.getElementById('num-words').value)) {
+                // Get coordinates for the word
+                const coords = embeddingData.coordinates[wordIndex];
+                
+                // Display word information
+                displayWordInfo(embeddingData.words[wordIndex]);
+                
+                // Update layout to focus on the word
+                Plotly.relayout('embedding-plot', {
+                    'xaxis.range': [coords[0] - 5, coords[0] + 5],
+                    'yaxis.range': [coords[1] - 5, coords[1] + 5]
+                });
+                
+                return true;
+            }
+            
+            return false;
+        }
+
+        // Initialize the application
+        async function initializeApp() {
+            try {
+                // Load config
+                const config = await loadConfig();
+                configData = config;
+                
+                // Populate model cards
+                populateModelCards(config.models);
+                
+                // Load the first model
+                if (config.models && config.models.length > 0) {
+                    loadEmbeddingData(config.models[0].file);
+                } else {
+                    // No models found, use sample data
+                    embeddingData = generateSampleData();
+                    updateVisualization();
+                    document.getElementById('embedding-plot').classList.remove('loading');
+                }
+            } catch (error) {
+                console.error("Error initializing app:", error);
+                // Fall back to sample data
+                embeddingData = generateSampleData();
+                updateVisualization();
+                document.getElementById('embedding-plot').classList.remove('loading');
+            }
         }
 
         // Initialize when page loads
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize with default parameters
-            initVisualization();
+            // Initialize app
+            initializeApp();
             
             // Event listeners for controls
             document.getElementById('search-button').addEventListener('click', function() {
-                const searchTerm = document.getElementById('search-input').value.toLowerCase();
-                if (!searchTerm || !embeddingData) return;
+                const searchTerm = document.getElementById('search-input').value.trim();
+                if (!searchTerm) return;
                 
-                const wordIndex = embeddingData.words.findIndex(word => 
-                    word.toLowerCase() === searchTerm
-                );
-                
-                if (wordIndex !== -1 && wordIndex < parseInt(document.getElementById('num-words').value)) {
-                    // Get coordinates for the word
-                    const coords = embeddingData.coordinates[wordIndex];
-                    
-                    // Update layout to focus on the word
-                    Plotly.relayout('embedding-plot', {
-                        'xaxis.range': [coords[0] - 5, coords[0] + 5],
-                        'yaxis.range': [coords[1] - 5, coords[1] + 5]
-                    });
-                    
-                    // Simulate click on the word to show info
-                    const selectedWord = embeddingData.words[wordIndex];
-                    document.getElementById('selected-word').textContent = selectedWord;
-                    
-                    // Display similar words if available
-                    const similarWordsContainer = document.getElementById('similar-words');
-                    similarWordsContainer.innerHTML = '';
-                    
-                    if (embeddingData.similarWords && embeddingData.similarWords[selectedWord]) {
-                        embeddingData.similarWords[selectedWord].forEach(similar => {
-                            const similarWordElem = document.createElement('div');
-                            similarWordElem.className = 'similar-word';
-                            similarWordElem.textContent = `${similar.word} (${similar.similarity})`;
-                            similarWordsContainer.appendChild(similarWordElem);
-                        });
-                    } else {
-                        similarWordsContainer.textContent = 'Similar word data not available';
-                    }
-                } else {
+                if (!findWord(searchTerm)) {
                     alert(`Word "${searchTerm}" not found among the ${document.getElementById('num-words').value} most frequent words.`);
                 }
             });
             
-            document.getElementById('update-viz').addEventListener('click', updateVisualization);
+            document.getElementById('search-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    document.getElementById('search-button').click();
+                }
+            });
+            
+            document.getElementById('similarity-button').addEventListener('click', function() {
+                const word = document.getElementById('similarity-input').value.trim();
+                if (!word) return;
+                
+                if (!findWord(word)) {
+                    alert(`Word "${word}" not found among the ${document.getElementById('num-words').value} most frequent words.`);
+                }
+            });
+            
+            document.getElementById('similarity-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    document.getElementById('similarity-button').click();
+                }
+            });
+            
+            document.getElementById('update-viz').addEventListener('click', function() {
+                updateVisualization();
+            });
             
             document.getElementById('reset-view').addEventListener('click', function() {
                 Plotly.relayout('embedding-plot', {

@@ -1,0 +1,120 @@
+# Word Embedding Visualization Configuration
+
+# Words to ignore in the visualization (will be filtered out)
+ignore:
+  # Common stopwords
+  - a
+  - an
+  - the
+  - and
+  - or
+  - but
+  - if
+  - because
+  - as
+  - what
+  - which
+  - who
+  - whom
+  - this
+  - that
+  - these
+  - those
+  - am
+  - is
+  - are
+  - was
+  - were
+  - be
+  - been
+  - being
+  - have
+  - has
+  - had
+  - do
+  - does
+  - did
+  - to
+  - at
+  - by
+  - for
+  - with
+  - about
+  - against
+  - between
+  - into
+  - through
+  - during
+  - before
+  - after
+  - above
+  - below
+  - from
+  - up
+  - down
+  - in
+  - out
+  - on
+  - off
+  - over
+  - under
+  - again
+  - further
+  - then
+  - once
+  - here
+  - there
+  - when
+  - where
+  - why
+  - how
+  - all
+  - any
+  - both
+  - each
+  - few
+  - more
+  - most
+  - other
+  - some
+  - such
+  - no
+  - nor
+  - not
+  - only
+  - own
+  - same
+  - so
+  - than
+  - too
+  - very
+  - can
+  - will
+  - just
+  - should
+  - now
+  
+  # Custom words to ignore (add your own here)
+  - etc
+  - ie
+  - eg
+  - example
+
+# Available embedding models
+models:
+  - name: "Word2Vec (Default)"
+    file: "word2vec_default.json"
+    description: "Word2Vec trained on general text corpus"
+  
+  - name: "GloVe"
+    file: "glove_embedding.json"
+    description: "GloVe embeddings with 300 dimensions"
+  
+  - name: "FastText"
+    file: "fasttext_embedding.json"
+    description: "FastText model with subword information"
+  
+  # Add your custom models here
+  - name: "Custom Model"
+    file: "embedding_data.json"
+    description: "Custom word embedding model"
