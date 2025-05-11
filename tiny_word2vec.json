@@ -1,0 +1,1418 @@
+{
+  "words": [
+    "of",
+    "capital",
+    "words",
+    "vector",
+    "representations",
+    "space",
+    "paris",
+    "queen",
+    "equals",
+    "woman",
+    "plus",
+    "man",
+    "minus",
+    "king",
+    "together",
+    "close",
+    "embeddings",
+    "similar",
+    "relationships",
+    "semantic",
+    "capture",
+    "vectors",
+    "appear",
+    "technology",
+    "monitor",
+    "orange",
+    "mouse",
+    "keyboard",
+    "computer",
+    "colors",
+    "yellow",
+    "green",
+    "blue",
+    "red",
+    "fruits",
+    "grape",
+    "banana",
+    "apple",
+    "france",
+    "animals",
+    "bird",
+    "fish",
+    "cat",
+    "dog",
+    "spain",
+    "madrid",
+    "italy",
+    "rome",
+    "germany",
+    "berlin"
+  ],
+  "coordinates": [
+    [
+      5.6033501625061035,
+      8.428675651550293
+    ],
+    [
+      16.15256118774414,
+      -25.5222225189209
+    ],
+    [
+      7.397290229797363,
+      -38.295291900634766
+    ],
+    [
+      8.050339698791504,
+      -24.988929748535156
+    ],
+    [
+      -18.251789093017578,
+      -31.414703369140625
+    ],
+    [
+      1.7123298645019531,
+      -0.9656611680984497
+    ],
+    [
+      -26.41451644897461,
+      -23.198265075683594
+    ],
+    [
+      30.730859756469727,
+      1.5677953958511353
+    ],
+    [
+      -17.715721130371094,
+      8.007416725158691
+    ],
+    [
+      -25.882122039794922,
+      -16.43172264099121
+    ],
+    [
+      -27.22284698486328,
+      7.330996990203857
+    ],
+    [
+      -22.085979461669922,
+      16.133821487426758
+    ],
+    [
+      -19.8690185546875,
+      3.942434310913086
+    ],
+    [
+      11.720487594604492,
+      -35.415470123291016
+    ],
+    [
+      -0.8451758027076721,
+      39.11644744873047
+    ],
+    [
+      4.648154258728027,
+      -21.138912200927734
+    ],
+    [
+      4.236116409301758,
+      -29.38913345336914
+    ],
+    [
+      34.125457763671875,
+      4.042322635650635
+    ],
+    [
+      -17.340930938720703,
+      23.259994506835938
+    ],
+    [
+      0.7542770504951477,
+      -35.90713882446289
+    ],
+    [
+      10.309260368347168,
+      28.98387336730957
+    ],
+    [
+      -11.053885459899902,
+      0.02463947795331478
+    ],
+    [
+      -7.516822814941406,
+      -1.4082235097885132
+    ],
+    [
+      -2.835017204284668,
+      35.59818649291992
+    ],
+    [
+      -11.311174392700195,
+      -33.646240234375
+    ],
+    [
+      27.663190841674805,
+      -7.770284652709961
+    ],
+    [
+      -16.904006958007812,
+      -24.43965721130371
+    ],
+    [
+      1.893011450767517,
+      5.249399662017822
+    ],
+    [
+      7.850152492523193,
+      -17.335800170898438
+    ],
+    [
+      -15.745234489440918,
+      -29.055051803588867
+    ],
+    [
+      -21.37061882019043,
+      26.154644012451172
+    ],
+    [
+      33.435176849365234,
+      -1.3224810361862183
+    ],
+    [
+      -2.726519823074341,
+      15.712944984436035
+    ],
+    [
+      27.49463653564453,
+      -1.9046263694763184
+    ],
+    [
+      -0.4276042580604553,
+      -39.759769439697266
+    ],
+    [
+      7.836345672607422,
+      -29.87681770324707
+    ],
+    [
+      27.689861297607422,
+      -14.024880409240723
+    ],
+    [
+      -1.0485539436340332,
+      12.42513656616211
+    ],
+    [
+      -23.839393615722656,
+      -12.729456901550293
+    ],
+    [
+      -6.594147682189941,
+      33.961387634277344
+    ],
+    [
+      -10.104255676269531,
+      -20.72620391845703
+    ],
+    [
+      -19.519071578979492,
+      -0.23767925798892975
+    ],
+    [
+      24.64060401916504,
+      -10.943008422851562
+    ],
+    [
+      21.307018280029297,
+      17.677165985107422
+    ],
+    [
+      -22.893695831298828,
+      -7.314846992492676
+    ],
+    [
+      20.19425392150879,
+      20.972732543945312
+    ],
+    [
+      7.7487688064575195,
+      31.127704620361328
+    ],
+    [
+      4.3823628425598145,
+      -3.2357027530670166
+    ],
+    [
+      -25.78413963317871,
+      15.908180236816406
+    ],
+    [
+      -14.214578628540039,
+      24.153690338134766
+    ]
+  ],
+  "frequencies": [
+    5,
+    4,
+    3,
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "similarWords": {
+    "of": [
+      {
+        "word": "keyboard",
+        "similarity": 0.7155595421791077
+      },
+      {
+        "word": "red",
+        "similarity": 0.6734287142753601
+      },
+      {
+        "word": "apple",
+        "similarity": 0.6455298066139221
+      },
+      {
+        "word": "dog",
+        "similarity": 0.6012550592422485
+      },
+      {
+        "word": "blue",
+        "similarity": 0.5333260893821716
+      }
+    ],
+    "capital": [
+      {
+        "word": "vector",
+        "similarity": 0.6109499931335449
+      },
+      {
+        "word": "grape",
+        "similarity": 0.6101872324943542
+      },
+      {
+        "word": "banana",
+        "similarity": 0.5765524506568909
+      },
+      {
+        "word": "embeddings",
+        "similarity": 0.3877333998680115
+      },
+      {
+        "word": "orange",
+        "similarity": 0.353416383266449
+      }
+    ],
+    "words": [
+      {
+        "word": "king",
+        "similarity": 0.5906874537467957
+      },
+      {
+        "word": "grape",
+        "similarity": 0.5888270139694214
+      },
+      {
+        "word": "fruits",
+        "similarity": 0.5457895994186401
+      },
+      {
+        "word": "computer",
+        "similarity": 0.5022941827774048
+      },
+      {
+        "word": "semantic",
+        "similarity": 0.46299195289611816
+      }
+    ],
+    "vector": [
+      {
+        "word": "yellow",
+        "similarity": 0.6308979988098145
+      },
+      {
+        "word": "capital",
+        "similarity": 0.6109499931335449
+      },
+      {
+        "word": "grape",
+        "similarity": 0.6067422032356262
+      },
+      {
+        "word": "madrid",
+        "similarity": 0.5373416543006897
+      },
+      {
+        "word": "embeddings",
+        "similarity": 0.5090461373329163
+      }
+    ],
+    "representations": [
+      {
+        "word": "colors",
+        "similarity": 0.6690274477005005
+      },
+      {
+        "word": "mouse",
+        "similarity": 0.5261282920837402
+      },
+      {
+        "word": "monitor",
+        "similarity": 0.4557590186595917
+      },
+      {
+        "word": "france",
+        "similarity": 0.44969189167022705
+      },
+      {
+        "word": "green",
+        "similarity": 0.4223456084728241
+      }
+    ],
+    "space": [
+      {
+        "word": "rome",
+        "similarity": 0.7671144604682922
+      },
+      {
+        "word": "keyboard",
+        "similarity": 0.6489177346229553
+      },
+      {
+        "word": "vectors",
+        "similarity": 0.5780568718910217
+      },
+      {
+        "word": "word",
+        "similarity": 0.5458211898803711
+      },
+      {
+        "word": "appear",
+        "similarity": 0.5254186391830444
+      }
+    ],
+    "paris": [
+      {
+        "word": "woman",
+        "similarity": 0.5091667771339417
+      },
+      {
+        "word": "embeddings",
+        "similarity": 0.442108690738678
+      },
+      {
+        "word": "colors",
+        "similarity": 0.36265113949775696
+      },
+      {
+        "word": "words",
+        "similarity": 0.2871744632720947
+      },
+      {
+        "word": "bird",
+        "similarity": 0.27048102021217346
+      }
+    ],
+    "queen": [
+      {
+        "word": "similar",
+        "similarity": 0.7908872365951538
+      },
+      {
+        "word": "green",
+        "similarity": 0.74029940366745
+      },
+      {
+        "word": "red",
+        "similarity": 0.6940723657608032
+      },
+      {
+        "word": "orange",
+        "similarity": 0.6789131164550781
+      },
+      {
+        "word": "of",
+        "similarity": 0.4385133385658264
+      }
+    ],
+    "equals": [
+      {
+        "word": "minus",
+        "similarity": 0.72017902135849
+      },
+      {
+        "word": "man",
+        "similarity": 0.5395234227180481
+      },
+      {
+        "word": "apple",
+        "similarity": 0.506846010684967
+      },
+      {
+        "word": "fish",
+        "similarity": 0.49112147092819214
+      },
+      {
+        "word": "germany",
+        "similarity": 0.4690711498260498
+      }
+    ],
+    "woman": [
+      {
+        "word": "france",
+        "similarity": 0.6137933135032654
+      },
+      {
+        "word": "paris",
+        "similarity": 0.5091668367385864
+      },
+      {
+        "word": "plus",
+        "similarity": 0.4346887469291687
+      },
+      {
+        "word": "spain",
+        "similarity": 0.4340825378894806
+      },
+      {
+        "word": "vector",
+        "similarity": 0.38583695888519287
+      }
+    ],
+    "plus": [
+      {
+        "word": "minus",
+        "similarity": 0.6703591346740723
+      },
+      {
+        "word": "germany",
+        "similarity": 0.6421263217926025
+      },
+      {
+        "word": "fish",
+        "similarity": 0.5514792799949646
+      },
+      {
+        "word": "spain",
+        "similarity": 0.5427868366241455
+      },
+      {
+        "word": "man",
+        "similarity": 0.5154356360435486
+      }
+    ],
+    "man": [
+      {
+        "word": "germany",
+        "similarity": 0.739599347114563
+      },
+      {
+        "word": "minus",
+        "similarity": 0.706253707408905
+      },
+      {
+        "word": "relationships",
+        "similarity": 0.6307448148727417
+      },
+      {
+        "word": "computer",
+        "similarity": 0.5855759382247925
+      },
+      {
+        "word": "equals",
+        "similarity": 0.5395234227180481
+      }
+    ],
+    "minus": [
+      {
+        "word": "fish",
+        "similarity": 0.8084010481834412
+      },
+      {
+        "word": "vectors",
+        "similarity": 0.750958263874054
+      },
+      {
+        "word": "equals",
+        "similarity": 0.72017902135849
+      },
+      {
+        "word": "man",
+        "similarity": 0.706253707408905
+      },
+      {
+        "word": "plus",
+        "similarity": 0.6703590154647827
+      }
+    ],
+    "king": [
+      {
+        "word": "words",
+        "similarity": 0.5906873941421509
+      },
+      {
+        "word": "grape",
+        "similarity": 0.5774957537651062
+      },
+      {
+        "word": "computer",
+        "similarity": 0.4553692936897278
+      },
+      {
+        "word": "fruits",
+        "similarity": 0.43995895981788635
+      },
+      {
+        "word": "monitor",
+        "similarity": 0.3935479521751404
+      }
+    ],
+    "together": [
+      {
+        "word": "technology",
+        "similarity": 0.49408388137817383
+      },
+      {
+        "word": "rome",
+        "similarity": 0.4211236238479614
+      },
+      {
+        "word": "bird",
+        "similarity": 0.3654542863368988
+      },
+      {
+        "word": "animals",
+        "similarity": 0.36346909403800964
+      },
+      {
+        "word": "apple",
+        "similarity": 0.3320138454437256
+      }
+    ],
+    "close": [
+      {
+        "word": "computer",
+        "similarity": 0.6633921265602112
+      },
+      {
+        "word": "mouse",
+        "similarity": 0.6155182123184204
+      },
+      {
+        "word": "vectors",
+        "similarity": 0.5843672752380371
+      },
+      {
+        "word": "fish",
+        "similarity": 0.46942567825317383
+      },
+      {
+        "word": "vector",
+        "similarity": 0.45465394854545593
+      }
+    ],
+    "embeddings": [
+      {
+        "word": "grape",
+        "similarity": 0.7845848202705383
+      },
+      {
+        "word": "computer",
+        "similarity": 0.5988278985023499
+      },
+      {
+        "word": "vector",
+        "similarity": 0.5090460777282715
+      },
+      {
+        "word": "paris",
+        "similarity": 0.44210875034332275
+      },
+      {
+        "word": "semantic",
+        "similarity": 0.39489367604255676
+      }
+    ],
+    "similar": [
+      {
+        "word": "queen",
+        "similarity": 0.7908872365951538
+      },
+      {
+        "word": "green",
+        "similarity": 0.7407679557800293
+      },
+      {
+        "word": "red",
+        "similarity": 0.6051651239395142
+      },
+      {
+        "word": "dog",
+        "similarity": 0.5762991309165955
+      },
+      {
+        "word": "spain",
+        "similarity": 0.558659017086029
+      }
+    ],
+    "relationships": [
+      {
+        "word": "berlin",
+        "similarity": 0.8000509142875671
+      },
+      {
+        "word": "yellow",
+        "similarity": 0.7061554789543152
+      },
+      {
+        "word": "man",
+        "similarity": 0.6307448148727417
+      },
+      {
+        "word": "capture",
+        "similarity": 0.6128633618354797
+      },
+      {
+        "word": "germany",
+        "similarity": 0.5316264629364014
+      }
+    ],
+    "semantic": [
+      {
+        "word": "fruits",
+        "similarity": 0.5134782791137695
+      },
+      {
+        "word": "words",
+        "similarity": 0.4629920423030853
+      },
+      {
+        "word": "grape",
+        "similarity": 0.43946659564971924
+      },
+      {
+        "word": "queen",
+        "similarity": 0.43715807795524597
+      },
+      {
+        "word": "equals",
+        "similarity": 0.4267781376838684
+      }
+    ],
+    "capture": [
+      {
+        "word": "italy",
+        "similarity": 0.7956191897392273
+      },
+      {
+        "word": "relationships",
+        "similarity": 0.612863302230835
+      },
+      {
+        "word": "madrid",
+        "similarity": 0.5720212459564209
+      },
+      {
+        "word": "dog",
+        "similarity": 0.47427722811698914
+      },
+      {
+        "word": "yellow",
+        "similarity": 0.4061485230922699
+      }
+    ],
+    "vectors": [
+      {
+        "word": "appear",
+        "similarity": 0.7675674557685852
+      },
+      {
+        "word": "minus",
+        "similarity": 0.750958263874054
+      },
+      {
+        "word": "fish",
+        "similarity": 0.7473540306091309
+      },
+      {
+        "word": "keyboard",
+        "similarity": 0.6898216009140015
+      },
+      {
+        "word": "apple",
+        "similarity": 0.6482420563697815
+      }
+    ],
+    "appear": [
+      {
+        "word": "vectors",
+        "similarity": 0.7675673961639404
+      },
+      {
+        "word": "keyboard",
+        "similarity": 0.5822067260742188
+      },
+      {
+        "word": "minus",
+        "similarity": 0.529748797416687
+      },
+      {
+        "word": "space",
+        "similarity": 0.5254185795783997
+      },
+      {
+        "word": "fish",
+        "similarity": 0.47366398572921753
+      }
+    ],
+    "technology": [
+      {
+        "word": "animals",
+        "similarity": 0.5770306587219238
+      },
+      {
+        "word": "italy",
+        "similarity": 0.5238826274871826
+      },
+      {
+        "word": "together",
+        "similarity": 0.4940839111804962
+      },
+      {
+        "word": "relationships",
+        "similarity": 0.42764532566070557
+      },
+      {
+        "word": "berlin",
+        "similarity": 0.31420767307281494
+      }
+    ],
+    "monitor": [
+      {
+        "word": "orange",
+        "similarity": 0.6278733015060425
+      },
+      {
+        "word": "colors",
+        "similarity": 0.6162005066871643
+      },
+      {
+        "word": "cat",
+        "similarity": 0.5095513463020325
+      },
+      {
+        "word": "red",
+        "similarity": 0.47654789686203003
+      },
+      {
+        "word": "fruits",
+        "similarity": 0.4597699046134949
+      }
+    ],
+    "orange": [
+      {
+        "word": "cat",
+        "similarity": 0.7002357840538025
+      },
+      {
+        "word": "queen",
+        "similarity": 0.6789131760597229
+      },
+      {
+        "word": "red",
+        "similarity": 0.6768388748168945
+      },
+      {
+        "word": "monitor",
+        "similarity": 0.6278733015060425
+      },
+      {
+        "word": "green",
+        "similarity": 0.6226152181625366
+      }
+    ],
+    "mouse": [
+      {
+        "word": "colors",
+        "similarity": 0.7105334401130676
+      },
+      {
+        "word": "close",
+        "similarity": 0.6155182123184204
+      },
+      {
+        "word": "france",
+        "similarity": 0.5443008542060852
+      },
+      {
+        "word": "computer",
+        "similarity": 0.5263954997062683
+      },
+      {
+        "word": "representations",
+        "similarity": 0.526128351688385
+      }
+    ],
+    "keyboard": [
+      {
+        "word": "of",
+        "similarity": 0.7155594825744629
+      },
+      {
+        "word": "vectors",
+        "similarity": 0.6898214817047119
+      },
+      {
+        "word": "word",
+        "similarity": 0.6547348499298096
+      },
+      {
+        "word": "space",
+        "similarity": 0.6489177346229553
+      },
+      {
+        "word": "apple",
+        "similarity": 0.6472546458244324
+      }
+    ],
+    "computer": [
+      {
+        "word": "grape",
+        "similarity": 0.6692634224891663
+      },
+      {
+        "word": "close",
+        "similarity": 0.6633920073509216
+      },
+      {
+        "word": "embeddings",
+        "similarity": 0.5988279581069946
+      },
+      {
+        "word": "man",
+        "similarity": 0.5855759978294373
+      },
+      {
+        "word": "mouse",
+        "similarity": 0.5263954997062683
+      }
+    ],
+    "colors": [
+      {
+        "word": "mouse",
+        "similarity": 0.7105334997177124
+      },
+      {
+        "word": "representations",
+        "similarity": 0.6690275073051453
+      },
+      {
+        "word": "monitor",
+        "similarity": 0.6162005662918091
+      },
+      {
+        "word": "green",
+        "similarity": 0.44596588611602783
+      },
+      {
+        "word": "fruits",
+        "similarity": 0.4328402280807495
+      }
+    ],
+    "yellow": [
+      {
+        "word": "relationships",
+        "similarity": 0.70615553855896
+      },
+      {
+        "word": "berlin",
+        "similarity": 0.6469385623931885
+      },
+      {
+        "word": "germany",
+        "similarity": 0.6449301242828369
+      },
+      {
+        "word": "vector",
+        "similarity": 0.630898118019104
+      },
+      {
+        "word": "banana",
+        "similarity": 0.503977358341217
+      }
+    ],
+    "green": [
+      {
+        "word": "similar",
+        "similarity": 0.7407680153846741
+      },
+      {
+        "word": "queen",
+        "similarity": 0.7402994632720947
+      },
+      {
+        "word": "red",
+        "similarity": 0.6661149263381958
+      },
+      {
+        "word": "orange",
+        "similarity": 0.6226152181625366
+      },
+      {
+        "word": "colors",
+        "similarity": 0.4459659457206726
+      }
+    ],
+    "blue": [
+      {
+        "word": "apple",
+        "similarity": 0.668706476688385
+      },
+      {
+        "word": "of",
+        "similarity": 0.5333260893821716
+      },
+      {
+        "word": "berlin",
+        "similarity": 0.5091593265533447
+      },
+      {
+        "word": "fish",
+        "similarity": 0.3839138150215149
+      },
+      {
+        "word": "equals",
+        "similarity": 0.3341946601867676
+      }
+    ],
+    "red": [
+      {
+        "word": "queen",
+        "similarity": 0.6940723061561584
+      },
+      {
+        "word": "orange",
+        "similarity": 0.6768388748168945
+      },
+      {
+        "word": "of",
+        "similarity": 0.6734287142753601
+      },
+      {
+        "word": "green",
+        "similarity": 0.666114866733551
+      },
+      {
+        "word": "similar",
+        "similarity": 0.6051651835441589
+      }
+    ],
+    "fruits": [
+      {
+        "word": "words",
+        "similarity": 0.5457896590232849
+      },
+      {
+        "word": "semantic",
+        "similarity": 0.5134782195091248
+      },
+      {
+        "word": "monitor",
+        "similarity": 0.4597699046134949
+      },
+      {
+        "word": "king",
+        "similarity": 0.43995898962020874
+      },
+      {
+        "word": "colors",
+        "similarity": 0.4328401982784271
+      }
+    ],
+    "grape": [
+      {
+        "word": "embeddings",
+        "similarity": 0.7845848202705383
+      },
+      {
+        "word": "computer",
+        "similarity": 0.6692634224891663
+      },
+      {
+        "word": "capital",
+        "similarity": 0.6101871728897095
+      },
+      {
+        "word": "vector",
+        "similarity": 0.606742262840271
+      },
+      {
+        "word": "words",
+        "similarity": 0.5888270139694214
+      }
+    ],
+    "banana": [
+      {
+        "word": "cat",
+        "similarity": 0.6183829307556152
+      },
+      {
+        "word": "orange",
+        "similarity": 0.6169277429580688
+      },
+      {
+        "word": "capital",
+        "similarity": 0.5765524506568909
+      },
+      {
+        "word": "yellow",
+        "similarity": 0.503977358341217
+      },
+      {
+        "word": "madrid",
+        "similarity": 0.34385156631469727
+      }
+    ],
+    "apple": [
+      {
+        "word": "blue",
+        "similarity": 0.668706476688385
+      },
+      {
+        "word": "vectors",
+        "similarity": 0.6482419967651367
+      },
+      {
+        "word": "keyboard",
+        "similarity": 0.6472547650337219
+      },
+      {
+        "word": "of",
+        "similarity": 0.6455298662185669
+      },
+      {
+        "word": "word",
+        "similarity": 0.6015772819519043
+      }
+    ],
+    "france": [
+      {
+        "word": "woman",
+        "similarity": 0.6137933135032654
+      },
+      {
+        "word": "mouse",
+        "similarity": 0.5443008542060852
+      },
+      {
+        "word": "spain",
+        "similarity": 0.5317432284355164
+      },
+      {
+        "word": "representations",
+        "similarity": 0.4496919512748718
+      },
+      {
+        "word": "colors",
+        "similarity": 0.4308890998363495
+      }
+    ],
+    "animals": [
+      {
+        "word": "technology",
+        "similarity": 0.5770306587219238
+      },
+      {
+        "word": "berlin",
+        "similarity": 0.43347498774528503
+      },
+      {
+        "word": "equals",
+        "similarity": 0.4326813220977783
+      },
+      {
+        "word": "together",
+        "similarity": 0.36346903443336487
+      },
+      {
+        "word": "banana",
+        "similarity": 0.3262966573238373
+      }
+    ],
+    "bird": [
+      {
+        "word": "green",
+        "similarity": 0.38712504506111145
+      },
+      {
+        "word": "together",
+        "similarity": 0.3654542565345764
+      },
+      {
+        "word": "italy",
+        "similarity": 0.34186244010925293
+      },
+      {
+        "word": "colors",
+        "similarity": 0.33443740010261536
+      },
+      {
+        "word": "france",
+        "similarity": 0.3294670581817627
+      }
+    ],
+    "fish": [
+      {
+        "word": "minus",
+        "similarity": 0.8084009885787964
+      },
+      {
+        "word": "vectors",
+        "similarity": 0.7473540902137756
+      },
+      {
+        "word": "spain",
+        "similarity": 0.6468879580497742
+      },
+      {
+        "word": "apple",
+        "similarity": 0.5544464588165283
+      },
+      {
+        "word": "plus",
+        "similarity": 0.5514792799949646
+      }
+    ],
+    "cat": [
+      {
+        "word": "orange",
+        "similarity": 0.7002357840538025
+      },
+      {
+        "word": "banana",
+        "similarity": 0.6183829307556152
+      },
+      {
+        "word": "monitor",
+        "similarity": 0.509551465511322
+      },
+      {
+        "word": "queen",
+        "similarity": 0.40543022751808167
+      },
+      {
+        "word": "red",
+        "similarity": 0.4052703380584717
+      }
+    ],
+    "dog": [
+      {
+        "word": "madrid",
+        "similarity": 0.7160336971282959
+      },
+      {
+        "word": "of",
+        "similarity": 0.6012549996376038
+      },
+      {
+        "word": "similar",
+        "similarity": 0.5762991309165955
+      },
+      {
+        "word": "word",
+        "similarity": 0.5146012902259827
+      },
+      {
+        "word": "red",
+        "similarity": 0.5101739168167114
+      }
+    ],
+    "spain": [
+      {
+        "word": "fish",
+        "similarity": 0.646888017654419
+      },
+      {
+        "word": "similar",
+        "similarity": 0.558659017086029
+      },
+      {
+        "word": "plus",
+        "similarity": 0.5427868366241455
+      },
+      {
+        "word": "france",
+        "similarity": 0.5317432284355164
+      },
+      {
+        "word": "woman",
+        "similarity": 0.43408262729644775
+      }
+    ],
+    "madrid": [
+      {
+        "word": "dog",
+        "similarity": 0.7160337567329407
+      },
+      {
+        "word": "capture",
+        "similarity": 0.5720212459564209
+      },
+      {
+        "word": "red",
+        "similarity": 0.5516940355300903
+      },
+      {
+        "word": "vector",
+        "similarity": 0.5373416543006897
+      },
+      {
+        "word": "italy",
+        "similarity": 0.4266433119773865
+      }
+    ],
+    "italy": [
+      {
+        "word": "capture",
+        "similarity": 0.7956191897392273
+      },
+      {
+        "word": "technology",
+        "similarity": 0.5238826274871826
+      },
+      {
+        "word": "madrid",
+        "similarity": 0.4266433119773865
+      },
+      {
+        "word": "bird",
+        "similarity": 0.34186244010925293
+      },
+      {
+        "word": "vector",
+        "similarity": 0.34026479721069336
+      }
+    ],
+    "rome": [
+      {
+        "word": "space",
+        "similarity": 0.7671144604682922
+      },
+      {
+        "word": "keyboard",
+        "similarity": 0.49127042293548584
+      },
+      {
+        "word": "word",
+        "similarity": 0.43848302960395813
+      },
+      {
+        "word": "together",
+        "similarity": 0.4211236536502838
+      },
+      {
+        "word": "words",
+        "similarity": 0.33781471848487854
+      }
+    ],
+    "germany": [
+      {
+        "word": "man",
+        "similarity": 0.7395992875099182
+      },
+      {
+        "word": "yellow",
+        "similarity": 0.6449302434921265
+      },
+      {
+        "word": "plus",
+        "similarity": 0.6421262621879578
+      },
+      {
+        "word": "minus",
+        "similarity": 0.5936211347579956
+      },
+      {
+        "word": "berlin",
+        "similarity": 0.5480776429176331
+      }
+    ],
+    "berlin": [
+      {
+        "word": "relationships",
+        "similarity": 0.8000510931015015
+      },
+      {
+        "word": "yellow",
+        "similarity": 0.6469385027885437
+      },
+      {
+        "word": "germany",
+        "similarity": 0.5480777621269226
+      },
+      {
+        "word": "man",
+        "similarity": 0.5229648351669312
+      },
+      {
+        "word": "blue",
+        "similarity": 0.5091593265533447
+      }
+    ]
+  },
+  "metadata": {
+    "modelType": "Unknown",
+    "vectorDimension": 10,
+    "totalWords": 56,
+    "filteredWords": 51,
+    "displayWords": 50,
+    "tsnePerplexity": 5
+  }
+}

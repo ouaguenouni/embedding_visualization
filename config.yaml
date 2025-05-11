@@ -89,32 +89,13 @@ ignore:
 - just
 - should
 - now
-- etc
-- ie
-- eg
-- example
 models:
-- description: Word2Vec trained on general text corpus
-  file: word2vec_default.json
-  name: Word2Vec (Default)
-- description: GloVe embeddings with 300 dimensions
-  file: glove_embedding.json
-  name: GloVe
-- description: FastText model with subword information
-  file: fasttext_embedding.json
-  name: FastText
-- description: Custom word embedding model
-  file: embedding_data.json
-  name: Custom Model
-- description: 'Word embedding model: Word2Vec Sample'
-  file: word2vec_sample.json
-  name: Word2Vec Sample
-- description: 'Word embedding model: Prn2Vec'
-  file: prn2vec.json
-  name: Prn2Vec
-- description: 'Word embedding model: Fasttext Sample'
-  file: fasttext_sample.json
-  name: Fasttext Sample
-- description: 'Word embedding model: Glove Twitter 25D'
-  file: glove_twitter_25d.json
-  name: Glove Twitter 25D
+- description: Tiny demo model (Tiny Word2Vec)
+  file: tiny_word2vec.json
+  name: Tiny Word2Vec
+- description: Tiny demo model (Tiny Fasttext)
+  file: tiny_fasttext.json
+  name: Tiny Fasttext
+- description: Tiny demo model (Tiny Custom)
+  file: tiny_custom.json
+  name: Tiny Custom

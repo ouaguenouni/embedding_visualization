@@ -1,8 +1,15 @@
+#!/usr/bin/env python3
+"""
+Prepares word embedding models for web visualization.
+This script processes Gensim models and converts them to JSON format.
+"""
+
 import json
 import yaml
 import numpy as np
 import pandas as pd
 import os
+import sys
 from gensim.models import Word2Vec, KeyedVectors, FastText
 from sklearn.manifold import TSNE
 import argparse

@@ -224,21 +224,19 @@
             <div class="control-group">
                 <h3>Words to Display</h3>
                 <select id="num-words">
-                    <option value="50">50 words</option>
-                    <option value="100" selected>100 words</option>
+                    <option value="25">25 words</option>
+                    <option value="50" selected>50 words</option>
+                    <option value="100">100 words</option>
                     <option value="200">200 words</option>
-                    <option value="500">500 words</option>
                 </select>
             </div>
             <div class="control-group">
                 <h3>Perplexity</h3>
                 <select id="perplexity">
-                    <option value="5">5 (tighter clusters)</option>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="30" selected>30 (balanced)</option>
-                    <option value="40">40</option>
-                    <option value="50">50 (more spread)</option>
+                    <option value="2">2 (tight clusters)</option>
+                    <option value="5" selected>5 (balanced)</option>
+                    <option value="10">10 (more spread)</option>
+                    <option value="20">20 (maximum spread)</option>
                 </select>
             </div>
             <div class="control-group">
@@ -305,7 +303,7 @@
                     models: [
                         {
                             name: "Default Model",
-                            file: "embedding_data.json",
+                            file: "tiny_custom.json",
                             description: "Default word embedding model"
                         }
                     ]
@@ -539,10 +537,6 @@
             const x = coordinates.map(coord => coord[0]);
             const y = coordinates.map(coord => coord[1]);
             
-            // Normalize sizes based on frequency
-            const maxFreq = Math.max(...frequencies);
-            const minFreq = Math.min(...frequencies);
-
             // Normalize sizes based on frequency
             const maxFreq = Math.max(...frequencies);
             const minFreq = Math.min(...frequencies);
