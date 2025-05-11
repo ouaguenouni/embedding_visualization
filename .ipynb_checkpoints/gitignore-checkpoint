@@ -1,0 +1,19 @@
+# Ignore large model files but keep the JSON files
+*.model
+*.kv
+*.vectors_ngrams.npy
+*.wv.vectors_ngrams.npy
+*.wv.vectors.npy
+demo_models/
+*.vectors
+*.npy
+
+# Optional: keep only these files for GitHub Pages
+# !index.html
+# !config.yaml
+# !tiny_*.json
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class

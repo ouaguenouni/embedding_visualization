@@ -537,12 +537,20 @@
             const x = coordinates.map(coord => coord[0]);
             const y = coordinates.map(coord => coord[1]);
             
-            // Normalize sizes based on frequency
-            const maxFreq = Math.max(...frequencies);
-            const minFreq = Math.min(...frequencies);
-            const sizes = frequencies.map(freq => 
-                10 + ((freq - minFreq) / (maxFreq - minFreq || 1)) * 25
-            );
+            // Normalize sizes based on frequency - FIXED this section to avoid redeclaring variables
+            let maxFreq, minFreq, sizes;
+            
+            // Check if frequencies has values
+            if (frequencies && frequencies.length > 0) {
+                maxFreq = Math.max(...frequencies);
+                minFreq = Math.min(...frequencies);
+                sizes = frequencies.map(freq => 
+                    10 + ((freq - minFreq) / ((maxFreq - minFreq) || 1)) * 25
+                );
+            } else {
+                // Default sizes if no frequencies
+                sizes = Array(words.length).fill(15);
+            }
             
             // Create the trace for Plotly
             const trace = {

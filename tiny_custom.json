@@ -38,144 +38,144 @@
   ],
   "coordinates": [
     [
-      6.210831642150879,
-      -5.420001029968262
+      38.226776123046875,
+      -112.84838104248047
     ],
     [
-      7.2655029296875,
-      -5.5516581535339355
+      23.860946655273438,
+      -120.04588317871094
     ],
     [
-      6.992070198059082,
-      -5.2444167137146
+      33.39472961425781,
+      -103.88532257080078
     ],
     [
-      6.751568794250488,
-      -5.318450927734375
+      33.035396575927734,
+      -120.93486785888672
     ],
     [
-      6.731764316558838,
-      -5.598613262176514
+      27.3433895111084,
+      -111.47793579101562
     ],
     [
-      5.438465118408203,
-      9.316058158874512
+      -100.54280853271484,
+      -74.19403839111328
     ],
     [
-      5.997910022735596,
-      9.298096656799316
+      -83.15497589111328,
+      -71.72933959960938
     ],
     [
-      6.1989312171936035,
-      9.39050579071045
+      -82.4026107788086,
+      -81.98775482177734
     ],
     [
-      5.436890602111816,
-      9.399776458740234
+      -91.50133514404297,
+      -77.81229400634766
     ],
     [
-      5.552504062652588,
-      9.674837112426758
+      -92.30172729492188,
+      -68.49335479736328
     ],
     [
-      13.293087005615234,
-      2.067415237426758
+      -30.907712936401367,
+      147.9819793701172
     ],
     [
-      13.579266548156738,
-      1.2862194776535034
+      -39.981300354003906,
+      149.25411987304688
     ],
     [
-      13.169259071350098,
-      1.7868436574935913
+      -43.598167419433594,
+      158.5071258544922
     ],
     [
-      13.298633575439453,
-      1.675637125968933
+      -24.97281265258789,
+      155.76377868652344
     ],
     [
-      13.718255043029785,
-      1.777666687965393
+      -34.21108627319336,
+      158.51744079589844
     ],
     [
-      -7.774495601654053,
-      -4.727919578552246
+      -59.6912841796875,
+      27.568748474121094
     ],
     [
-      -8.219695091247559,
-      -4.885387897491455
+      -69.15576934814453,
+      31.313316345214844
     ],
     [
-      -8.104084968566895,
-      -5.285027027130127
+      -57.11513900756836,
+      45.006168365478516
     ],
     [
-      -7.608126640319824,
-      -5.2621636390686035
+      -53.410125732421875,
+      35.12315368652344
     ],
     [
-      -7.995649814605713,
-      -4.855734348297119
+      -63.00049591064453,
+      38.03342819213867
     ],
     [
-      -0.127499058842659,
-      -13.470696449279785
+      68.18305969238281,
+      93.37810516357422
     ],
     [
-      -0.7675323486328125,
-      -13.227506637573242
+      57.53776550292969,
+      91.30667877197266
     ],
     [
-      -0.6042584180831909,
-      -13.561245918273926
+      50.764251708984375,
+      85.11369323730469
     ],
     [
-      -0.6024444699287415,
-      -14.028512001037598
+      58.332645416259766,
+      79.91120910644531
     ],
     [
-      -0.4840758442878723,
-      -13.614173889160156
+      66.3990478515625,
+      83.98311614990234
     ],
     [
-      12.514568328857422,
-      -10.733716011047363
+      140.2216796875,
+      9.536550521850586
     ],
     [
-      13.00102710723877,
-      -11.156807899475098
+      154.08628845214844,
+      -2.6875178813934326
     ],
     [
-      12.38847827911377,
-      -10.756328582763672
+      137.9362335205078,
+      0.25847959518432617
     ],
     [
-      12.993426322937012,
-      -10.667155265808105
+      148.78102111816406,
+      4.601268291473389
     ],
     [
-      12.63989543914795,
-      -11.257990837097168
+      145.3618927001953,
+      -6.012959957122803
     ],
     [
-      -7.437314033508301,
-      5.8264994621276855
+      30.63636589050293,
+      -14.551408767700195
     ],
     [
-      -7.93379020690918,
-      5.773747444152832
+      35.2148323059082,
+      -6.618134021759033
     ],
     [
-      -7.763710975646973,
-      5.2996907234191895
+      19.685367584228516,
+      -12.329405784606934
     ],
     [
-      -7.455050468444824,
-      5.551506996154785
+      25.42823028564453,
+      -5.063019752502441
     ],
     [
-      -8.002752304077148,
-      5.891420841217041
+      24.256736755371094,
+      -21.531017303466797
     ]
   ],
   "frequencies": [
@@ -218,772 +218,772 @@
   "similarWords": {
     "one": [
       {
-        "word": "four",
-        "similarity": 0.9032681584358215
-      },
-      {
         "word": "five",
-        "similarity": 0.8993543386459351
+        "similarity": 0.9368932247161865
       },
       {
-        "word": "three",
-        "similarity": 0.8352096080780029
+        "word": "four",
+        "similarity": 0.924787700176239
       },
       {
         "word": "two",
-        "similarity": 0.7593877911567688
+        "similarity": 0.9101819396018982
       },
       {
-        "word": "germany",
-        "similarity": 0.3933646082878113
+        "word": "three",
+        "similarity": 0.8975889682769775
+      },
+      {
+        "word": "cherry",
+        "similarity": 0.27297547459602356
       }
     ],
     "two": [
       {
-        "word": "three",
-        "similarity": 0.919666588306427
+        "word": "four",
+        "similarity": 0.9717922806739807
       },
       {
         "word": "five",
-        "similarity": 0.9137073755264282
-      },
-      {
-        "word": "four",
-        "similarity": 0.9118521809577942
+        "similarity": 0.9480121731758118
       },
       {
         "word": "one",
-        "similarity": 0.7593878507614136
+        "similarity": 0.9101819396018982
       },
       {
-        "word": "computer",
-        "similarity": 0.42322155833244324
+        "word": "three",
+        "similarity": 0.8551663160324097
+      },
+      {
+        "word": "cherry",
+        "similarity": 0.28390344977378845
       }
     ],
     "three": [
       {
-        "word": "four",
-        "similarity": 0.9675919413566589
-      },
-      {
         "word": "five",
-        "similarity": 0.9377994537353516
-      },
-      {
-        "word": "two",
-        "similarity": 0.9196665287017822
+        "similarity": 0.9026090502738953
       },
       {
         "word": "one",
-        "similarity": 0.8352096080780029
+        "similarity": 0.8975889086723328
       },
       {
-        "word": "software",
-        "similarity": 0.30689185857772827
+        "word": "four",
+        "similarity": 0.8689107894897461
+      },
+      {
+        "word": "two",
+        "similarity": 0.8551662564277649
+      },
+      {
+        "word": "fly",
+        "similarity": 0.17041751742362976
       }
     ],
     "four": [
       {
-        "word": "three",
-        "similarity": 0.9675920009613037
+        "word": "two",
+        "similarity": 0.9717922806739807
       },
       {
         "word": "five",
-        "similarity": 0.953403115272522
-      },
-      {
-        "word": "two",
-        "similarity": 0.9118521809577942
+        "similarity": 0.9570708870887756
       },
       {
         "word": "one",
-        "similarity": 0.9032682180404663
+        "similarity": 0.924787700176239
       },
       {
-        "word": "software",
-        "similarity": 0.34217068552970886
+        "word": "three",
+        "similarity": 0.8689108490943909
+      },
+      {
+        "word": "fly",
+        "similarity": 0.2128182202577591
       }
     ],
     "five": [
       {
         "word": "four",
-        "similarity": 0.953403115272522
-      },
-      {
-        "word": "three",
-        "similarity": 0.9377995133399963
+        "similarity": 0.9570708870887756
       },
       {
         "word": "two",
-        "similarity": 0.9137073755264282
+        "similarity": 0.9480121731758118
       },
       {
         "word": "one",
-        "similarity": 0.8993543982505798
+        "similarity": 0.9368932247161865
       },
       {
-        "word": "software",
-        "similarity": 0.44182243943214417
+        "word": "three",
+        "similarity": 0.90260910987854
+      },
+      {
+        "word": "fly",
+        "similarity": 0.28876861929893494
       }
     ],
     "dog": [
       {
-        "word": "fish",
-        "similarity": 0.9600316882133484
+        "word": "horse",
+        "similarity": 0.897853434085846
       },
       {
-        "word": "horse",
-        "similarity": 0.9497601985931396
+        "word": "fish",
+        "similarity": 0.891441285610199
       },
       {
         "word": "cat",
-        "similarity": 0.9267016053199768
+        "similarity": 0.8082132339477539
       },
       {
         "word": "bird",
-        "similarity": 0.8587907552719116
+        "similarity": 0.7422442436218262
       },
       {
-        "word": "grape",
-        "similarity": 0.25363102555274963
+        "word": "yellow",
+        "similarity": 0.29148849844932556
       }
     ],
     "cat": [
       {
-        "word": "bird",
-        "similarity": 0.963737964630127
-      },
-      {
-        "word": "dog",
-        "similarity": 0.926701545715332
-      },
-      {
         "word": "fish",
-        "similarity": 0.9214591979980469
+        "similarity": 0.9431246519088745
       },
       {
         "word": "horse",
-        "similarity": 0.9066838026046753
+        "similarity": 0.9129114151000977
       },
       {
-        "word": "grape",
-        "similarity": 0.2756105661392212
+        "word": "bird",
+        "similarity": 0.8640623688697815
+      },
+      {
+        "word": "dog",
+        "similarity": 0.8082132339477539
+      },
+      {
+        "word": "yellow",
+        "similarity": 0.2746727764606476
       }
     ],
     "bird": [
       {
         "word": "cat",
-        "similarity": 0.963737964630127
-      },
-      {
-        "word": "horse",
-        "similarity": 0.8771427273750305
+        "similarity": 0.8640623688697815
       },
       {
         "word": "fish",
-        "similarity": 0.8640469312667847
+        "similarity": 0.8582053780555725
+      },
+      {
+        "word": "horse",
+        "similarity": 0.8484048247337341
       },
       {
         "word": "dog",
-        "similarity": 0.8587906956672668
+        "similarity": 0.7422442436218262
       },
       {
-        "word": "grape",
-        "similarity": 0.2677503228187561
+        "word": "canada",
+        "similarity": 0.13759782910346985
       }
     ],
     "fish": [
       {
-        "word": "dog",
-        "similarity": 0.9600316882133484
-      },
-      {
         "word": "horse",
-        "similarity": 0.9518937468528748
+        "similarity": 0.974748432636261
       },
       {
         "word": "cat",
-        "similarity": 0.9214592576026917
+        "similarity": 0.9431245923042297
+      },
+      {
+        "word": "dog",
+        "similarity": 0.8914412260055542
       },
       {
         "word": "bird",
-        "similarity": 0.8640469908714294
+        "similarity": 0.8582053184509277
       },
       {
-        "word": "france",
-        "similarity": 0.164957657456398
+        "word": "cherry",
+        "similarity": 0.26895371079444885
       }
     ],
     "horse": [
       {
         "word": "fish",
-        "similarity": 0.9518937468528748
-      },
-      {
-        "word": "dog",
-        "similarity": 0.9497601985931396
+        "similarity": 0.974748432636261
       },
       {
         "word": "cat",
-        "similarity": 0.9066838622093201
+        "similarity": 0.9129113554954529
+      },
+      {
+        "word": "dog",
+        "similarity": 0.8978533744812012
       },
       {
         "word": "bird",
-        "similarity": 0.8771427869796753
+        "similarity": 0.8484047651290894
       },
       {
-        "word": "hardware",
-        "similarity": 0.15662884712219238
+        "word": "cherry",
+        "similarity": 0.2708318531513214
       }
     ],
     "red": [
       {
-        "word": "yellow",
-        "similarity": 0.9650426506996155
-      },
-      {
-        "word": "green",
-        "similarity": 0.9571749567985535
-      },
-      {
         "word": "purple",
-        "similarity": 0.9247183799743652
+        "similarity": 0.9642519950866699
       },
       {
         "word": "blue",
-        "similarity": 0.880027174949646
+        "similarity": 0.9623710513114929
       },
       {
-        "word": "three",
-        "similarity": 0.28729909658432007
+        "word": "yellow",
+        "similarity": 0.9377682209014893
+      },
+      {
+        "word": "green",
+        "similarity": 0.9215124249458313
+      },
+      {
+        "word": "france",
+        "similarity": 0.145911306142807
       }
     ],
     "blue": [
       {
-        "word": "yellow",
-        "similarity": 0.9309613108634949
-      },
-      {
         "word": "purple",
-        "similarity": 0.9158729314804077
-      },
-      {
-        "word": "green",
-        "similarity": 0.8950392603874207
+        "similarity": 0.9646169543266296
       },
       {
         "word": "red",
-        "similarity": 0.880027174949646
+        "similarity": 0.9623710513114929
+      },
+      {
+        "word": "green",
+        "similarity": 0.93173748254776
+      },
+      {
+        "word": "yellow",
+        "similarity": 0.9261067509651184
       },
       {
         "word": "three",
-        "similarity": 0.2527875006198883
+        "similarity": 0.14495602250099182
       }
     ],
     "green": [
       {
-        "word": "yellow",
-        "similarity": 0.9869862794876099
-      },
-      {
-        "word": "red",
-        "similarity": 0.9571749567985535
+        "word": "blue",
+        "similarity": 0.93173748254776
       },
       {
         "word": "purple",
-        "similarity": 0.9470424056053162
+        "similarity": 0.9280235171318054
       },
       {
-        "word": "blue",
-        "similarity": 0.8950392603874207
+        "word": "red",
+        "similarity": 0.9215124249458313
       },
       {
-        "word": "three",
-        "similarity": 0.26006418466567993
+        "word": "yellow",
+        "similarity": 0.9011224508285522
+      },
+      {
+        "word": "swim",
+        "similarity": 0.22901441156864166
       }
     ],
     "yellow": [
       {
-        "word": "green",
-        "similarity": 0.9869862794876099
-      },
-      {
         "word": "red",
-        "similarity": 0.9650426506996155
-      },
-      {
-        "word": "purple",
-        "similarity": 0.9578920006752014
+        "similarity": 0.937768280506134
       },
       {
         "word": "blue",
-        "similarity": 0.9309613108634949
+        "similarity": 0.9261068105697632
       },
       {
-        "word": "three",
-        "similarity": 0.2822195291519165
+        "word": "purple",
+        "similarity": 0.9079362154006958
+      },
+      {
+        "word": "green",
+        "similarity": 0.901122510433197
+      },
+      {
+        "word": "dog",
+        "similarity": 0.29148849844932556
       }
     ],
     "purple": [
       {
-        "word": "yellow",
-        "similarity": 0.9578920006752014
-      },
-      {
-        "word": "green",
-        "similarity": 0.9470424056053162
+        "word": "blue",
+        "similarity": 0.9646170139312744
       },
       {
         "word": "red",
-        "similarity": 0.9247183799743652
+        "similarity": 0.9642520546913147
       },
       {
-        "word": "blue",
-        "similarity": 0.9158729314804077
+        "word": "green",
+        "similarity": 0.9280235767364502
       },
       {
-        "word": "apple",
-        "similarity": 0.25185927748680115
+        "word": "yellow",
+        "similarity": 0.9079362154006958
+      },
+      {
+        "word": "swim",
+        "similarity": 0.1365678310394287
       }
     ],
     "usa": [
       {
         "word": "japan",
-        "similarity": 0.9524099826812744
+        "similarity": 0.9448476433753967
       },
       {
         "word": "canada",
-        "similarity": 0.9294437170028687
-      },
-      {
-        "word": "france",
-        "similarity": 0.9066450595855713
+        "similarity": 0.9345799684524536
       },
       {
         "word": "germany",
-        "similarity": 0.8995777368545532
+        "similarity": 0.927274763584137
       },
       {
-        "word": "blue",
-        "similarity": 0.2209290862083435
+        "word": "france",
+        "similarity": 0.9210766553878784
+      },
+      {
+        "word": "swim",
+        "similarity": 0.2520482838153839
       }
     ],
     "canada": [
       {
         "word": "japan",
-        "similarity": 0.9545642137527466
+        "similarity": 0.9426941275596619
       },
       {
         "word": "usa",
-        "similarity": 0.9294437170028687
-      },
-      {
-        "word": "france",
-        "similarity": 0.9294353127479553
+        "similarity": 0.9345800280570984
       },
       {
         "word": "germany",
-        "similarity": 0.8887556195259094
+        "similarity": 0.9276210069656372
       },
       {
-        "word": "fly",
-        "similarity": 0.2656843662261963
+        "word": "france",
+        "similarity": 0.9233553409576416
+      },
+      {
+        "word": "jump",
+        "similarity": 0.2626485824584961
       }
     ],
     "france": [
       {
         "word": "japan",
-        "similarity": 0.9344682693481445
+        "similarity": 0.9382467865943909
       },
       {
         "word": "canada",
-        "similarity": 0.9294353127479553
+        "similarity": 0.9233553409576416
       },
       {
         "word": "usa",
-        "similarity": 0.9066450595855713
+        "similarity": 0.9210767149925232
       },
       {
         "word": "germany",
-        "similarity": 0.9038057923316956
+        "similarity": 0.9133530855178833
       },
       {
-        "word": "blue",
-        "similarity": 0.23538631200790405
+        "word": "computer",
+        "similarity": 0.2285560518503189
       }
     ],
     "germany": [
       {
         "word": "japan",
-        "similarity": 0.9043396711349487
-      },
-      {
-        "word": "france",
-        "similarity": 0.9038057923316956
-      },
-      {
-        "word": "usa",
-        "similarity": 0.8995777368545532
+        "similarity": 0.9841659665107727
       },
       {
         "word": "canada",
-        "similarity": 0.8887556195259094
+        "similarity": 0.9276210069656372
       },
       {
-        "word": "one",
-        "similarity": 0.39336463809013367
+        "word": "usa",
+        "similarity": 0.9272748231887817
+      },
+      {
+        "word": "france",
+        "similarity": 0.9133530855178833
+      },
+      {
+        "word": "banana",
+        "similarity": 0.3509279191493988
       }
     ],
     "japan": [
       {
-        "word": "canada",
-        "similarity": 0.9545642137527466
+        "word": "germany",
+        "similarity": 0.9841659069061279
       },
       {
         "word": "usa",
-        "similarity": 0.9524099826812744
+        "similarity": 0.9448476433753967
+      },
+      {
+        "word": "canada",
+        "similarity": 0.9426940679550171
       },
       {
         "word": "france",
-        "similarity": 0.9344682693481445
+        "similarity": 0.9382467269897461
       },
       {
-        "word": "germany",
-        "similarity": 0.9043396711349487
-      },
-      {
-        "word": "grape",
-        "similarity": 0.1921348124742508
+        "word": "banana",
+        "similarity": 0.22112485766410828
       }
     ],
     "apple": [
       {
-        "word": "orange",
-        "similarity": 0.9392067193984985
-      },
-      {
         "word": "cherry",
-        "similarity": 0.9377068877220154
+        "similarity": 0.9194837212562561
       },
       {
-        "word": "banana",
-        "similarity": 0.8780733346939087
+        "word": "orange",
+        "similarity": 0.8500624299049377
       },
       {
         "word": "grape",
-        "similarity": 0.8694412112236023
+        "similarity": 0.8425620794296265
       },
       {
-        "word": "hardware",
-        "similarity": 0.3872074484825134
+        "word": "banana",
+        "similarity": 0.8294782042503357
+      },
+      {
+        "word": "horse",
+        "similarity": 0.2486533671617508
       }
     ],
     "banana": [
       {
+        "word": "grape",
+        "similarity": 0.9617483615875244
+      },
+      {
         "word": "orange",
-        "similarity": 0.95244961977005
+        "similarity": 0.931282639503479
       },
       {
         "word": "cherry",
-        "similarity": 0.9381516575813293
+        "similarity": 0.9004305601119995
       },
       {
         "word": "apple",
-        "similarity": 0.8780733346939087
+        "similarity": 0.8294781446456909
       },
       {
-        "word": "grape",
-        "similarity": 0.8414179682731628
-      },
-      {
-        "word": "swim",
-        "similarity": 0.12861751019954681
+        "word": "germany",
+        "similarity": 0.3509278893470764
       }
     ],
     "orange": [
       {
+        "word": "grape",
+        "similarity": 0.9512295722961426
+      },
+      {
         "word": "cherry",
-        "similarity": 0.9646990895271301
+        "similarity": 0.9418854117393494
       },
       {
         "word": "banana",
-        "similarity": 0.9524495601654053
+        "similarity": 0.931282639503479
       },
       {
         "word": "apple",
-        "similarity": 0.9392066597938538
+        "similarity": 0.850062370300293
       },
       {
-        "word": "grape",
-        "similarity": 0.9308329820632935
-      },
-      {
-        "word": "hardware",
-        "similarity": 0.23479489982128143
+        "word": "one",
+        "similarity": 0.21886175870895386
       }
     ],
     "grape": [
       {
+        "word": "banana",
+        "similarity": 0.9617484211921692
+      },
+      {
         "word": "orange",
-        "similarity": 0.9308330416679382
+        "similarity": 0.9512296319007874
       },
       {
         "word": "cherry",
-        "similarity": 0.9285696744918823
+        "similarity": 0.9510372281074524
       },
       {
         "word": "apple",
-        "similarity": 0.8694412112236023
+        "similarity": 0.8425620794296265
       },
       {
-        "word": "banana",
-        "similarity": 0.8414179682731628
-      },
-      {
-        "word": "hardware",
-        "similarity": 0.37795037031173706
+        "word": "germany",
+        "similarity": 0.27774107456207275
       }
     ],
     "cherry": [
       {
-        "word": "orange",
-        "similarity": 0.9646991491317749
+        "word": "grape",
+        "similarity": 0.9510372281074524
       },
       {
-        "word": "banana",
-        "similarity": 0.9381516575813293
+        "word": "orange",
+        "similarity": 0.9418854713439941
       },
       {
         "word": "apple",
-        "similarity": 0.9377068877220154
+        "similarity": 0.9194837212562561
       },
       {
-        "word": "grape",
-        "similarity": 0.9285696744918823
+        "word": "banana",
+        "similarity": 0.9004306197166443
       },
       {
-        "word": "hardware",
-        "similarity": 0.2889763116836548
+        "word": "two",
+        "similarity": 0.28390344977378845
       }
     ],
     "computer": [
       {
         "word": "software",
-        "similarity": 0.9798955321311951
-      },
-      {
-        "word": "hardware",
-        "similarity": 0.921920657157898
+        "similarity": 0.940108060836792
       },
       {
         "word": "data",
-        "similarity": 0.9084593653678894
+        "similarity": 0.9305567741394043
       },
       {
         "word": "internet",
-        "similarity": 0.8971772789955139
+        "similarity": 0.9000979661941528
       },
       {
-        "word": "two",
-        "similarity": 0.42322155833244324
+        "word": "hardware",
+        "similarity": 0.8970035314559937
+      },
+      {
+        "word": "france",
+        "similarity": 0.22855603694915771
       }
     ],
     "internet": [
       {
         "word": "data",
-        "similarity": 0.9079561233520508
-      },
-      {
-        "word": "computer",
-        "similarity": 0.8971772789955139
+        "similarity": 0.9834298491477966
       },
       {
         "word": "hardware",
-        "similarity": 0.8896057605743408
+        "similarity": 0.9802961349487305
       },
       {
         "word": "software",
-        "similarity": 0.8761851787567139
+        "similarity": 0.919223427772522
       },
       {
-        "word": "two",
-        "similarity": 0.17468388378620148
+        "word": "computer",
+        "similarity": 0.9000980257987976
+      },
+      {
+        "word": "walk",
+        "similarity": 0.15008914470672607
       }
     ],
     "software": [
       {
-        "word": "computer",
-        "similarity": 0.9798954725265503
-      },
-      {
-        "word": "data",
-        "similarity": 0.9017688035964966
-      },
-      {
         "word": "hardware",
-        "similarity": 0.8839381337165833
+        "similarity": 0.9520748257637024
+      },
+      {
+        "word": "computer",
+        "similarity": 0.940108060836792
       },
       {
         "word": "internet",
-        "similarity": 0.8761851191520691
+        "similarity": 0.9192233681678772
       },
       {
-        "word": "five",
-        "similarity": 0.44182243943214417
+        "word": "data",
+        "similarity": 0.9179802536964417
+      },
+      {
+        "word": "orange",
+        "similarity": 0.19453828036785126
       }
     ],
     "hardware": [
       {
-        "word": "computer",
-        "similarity": 0.9219205975532532
-      },
-      {
         "word": "internet",
-        "similarity": 0.889605700969696
-      },
-      {
-        "word": "software",
-        "similarity": 0.8839381337165833
+        "similarity": 0.9802960753440857
       },
       {
         "word": "data",
-        "similarity": 0.8748680353164673
+        "similarity": 0.9608957171440125
       },
       {
-        "word": "apple",
-        "similarity": 0.38720741868019104
+        "word": "software",
+        "similarity": 0.9520748257637024
+      },
+      {
+        "word": "computer",
+        "similarity": 0.8970035314559937
+      },
+      {
+        "word": "four",
+        "similarity": 0.15660685300827026
       }
     ],
     "data": [
       {
-        "word": "computer",
-        "similarity": 0.9084593057632446
-      },
-      {
         "word": "internet",
-        "similarity": 0.907956063747406
-      },
-      {
-        "word": "software",
-        "similarity": 0.9017688035964966
+        "similarity": 0.9834298491477966
       },
       {
         "word": "hardware",
-        "similarity": 0.8748680353164673
+        "similarity": 0.9608957171440125
       },
       {
-        "word": "two",
-        "similarity": 0.29844406247138977
+        "word": "computer",
+        "similarity": 0.9305567741394043
+      },
+      {
+        "word": "software",
+        "similarity": 0.9179802536964417
+      },
+      {
+        "word": "dog",
+        "similarity": 0.1187562346458435
       }
     ],
     "run": [
       {
-        "word": "swim",
-        "similarity": 0.9528396129608154
+        "word": "walk",
+        "similarity": 0.9681318402290344
       },
       {
-        "word": "walk",
-        "similarity": 0.9407820105552673
+        "word": "swim",
+        "similarity": 0.965270459651947
       },
       {
         "word": "jump",
-        "similarity": 0.9316367506980896
+        "similarity": 0.9607924222946167
       },
       {
         "word": "fly",
-        "similarity": 0.922833263874054
+        "similarity": 0.931812047958374
       },
       {
-        "word": "internet",
-        "similarity": 0.11413052678108215
+        "word": "green",
+        "similarity": 0.1589880883693695
       }
     ],
     "walk": [
       {
-        "word": "fly",
-        "similarity": 0.9703419208526611
+        "word": "run",
+        "similarity": 0.9681318998336792
       },
       {
         "word": "swim",
-        "similarity": 0.9434598088264465
-      },
-      {
-        "word": "run",
-        "similarity": 0.9407820105552673
+        "similarity": 0.9492086172103882
       },
       {
         "word": "jump",
-        "similarity": 0.9321170449256897
+        "similarity": 0.9133054614067078
+      },
+      {
+        "word": "fly",
+        "similarity": 0.8745225667953491
       },
       {
         "word": "canada",
-        "similarity": 0.15669456124305725
+        "similarity": 0.18354976177215576
       }
     ],
     "jump": [
       {
         "word": "swim",
-        "similarity": 0.9356098175048828
-      },
-      {
-        "word": "walk",
-        "similarity": 0.9321170449256897
+        "similarity": 0.9613990187644958
       },
       {
         "word": "run",
-        "similarity": 0.9316367506980896
+        "similarity": 0.9607924818992615
+      },
+      {
+        "word": "walk",
+        "similarity": 0.9133054614067078
       },
       {
         "word": "fly",
-        "similarity": 0.9088056683540344
+        "similarity": 0.9125066995620728
       },
       {
-        "word": "internet",
-        "similarity": 0.16560323536396027
+        "word": "canada",
+        "similarity": 0.2626485824584961
       }
     ],
     "swim": [
       {
         "word": "run",
-        "similarity": 0.9528396129608154
-      },
-      {
-        "word": "walk",
-        "similarity": 0.9434598088264465
+        "similarity": 0.9652705192565918
       },
       {
         "word": "jump",
-        "similarity": 0.9356098175048828
+        "similarity": 0.9613990187644958
+      },
+      {
+        "word": "walk",
+        "similarity": 0.9492086172103882
       },
       {
         "word": "fly",
-        "similarity": 0.9188923835754395
+        "similarity": 0.9216968417167664
       },
       {
-        "word": "one",
-        "similarity": 0.15173976123332977
+        "word": "usa",
+        "similarity": 0.2520482838153839
       }
     ],
     "fly": [
       {
-        "word": "walk",
-        "similarity": 0.9703419208526611
-      },
-      {
         "word": "run",
-        "similarity": 0.922833263874054
+        "similarity": 0.9318121075630188
       },
       {
         "word": "swim",
-        "similarity": 0.9188923835754395
+        "similarity": 0.9216968417167664
       },
       {
         "word": "jump",
-        "similarity": 0.9088056683540344
+        "similarity": 0.9125066995620728
       },
       {
-        "word": "canada",
-        "similarity": 0.2656843662261963
+        "word": "walk",
+        "similarity": 0.8745225667953491
+      },
+      {
+        "word": "five",
+        "similarity": 0.28876861929893494
       }
     ]
   },
