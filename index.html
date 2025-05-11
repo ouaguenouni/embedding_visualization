@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Word Embedding Explorer (Debug Mode)</title>
+    <title>Word Embedding Explorer</title>
     <!-- Plotly.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.24.2/plotly.min.js"></script>
+    <!-- Optional: Add PapaParse for CSV parsing if needed -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <!-- JS-YAML for parsing the config file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
     <style>
-        /* Same styles as before */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -56,6 +59,51 @@
             font-size: 1.2em;
             margin-bottom: 10px;
             color: #2c3e50;
+        }
+        .model-selector {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .model-selector h3 {
+            margin-top: 0;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        .model-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .model-card {
+            flex: 1;
+            min-width: 250px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .model-card:hover {
+            border-color: #3498db;
+            background-color: #f7fbfe;
+        }
+        .model-card.active {
+            border-color: #3498db;
+            background-color: #ebf5fb;
+        }
+        .model-card h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        .model-card p {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 0;
         }
         .plot-container {
             background-color: white;
@@ -113,6 +161,20 @@
             border-radius: 15px;
             font-size: 14px;
         }
+        .metadata {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        .metadata-item {
+            display: flex;
+            margin-bottom: 5px;
+        }
+        .metadata-label {
+            font-weight: bold;
+            width: 180px;
+        }
         footer {
             text-align: center;
             padding: 20px;
@@ -126,14 +188,16 @@
             font-size: 18px;
             color: #7f8c8d;
         }
-        .debug-panel {
-            background-color: #fff8e1;
-            border-left: 4px solid #ffb300;
-            padding: 15px;
-            margin-bottom: 20px;
-            font-family: monospace;
-            overflow: auto;
-            max-height: 200px;
+        .similarity-search {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .similarity-search input {
+            flex-grow: 1;
+        }
+        .similarity-search button {
+            flex-shrink: 0;
         }
     </style>
 </head>
@@ -146,9 +210,11 @@
     </header>
 
     <div class="container">
-        <div class="debug-panel" id="debug-panel">
-            <h3>Debug Information</h3>
-            <p>Loading status will appear here...</p>
+        <div class="model-selector">
+            <h3>Select Embedding Model</h3>
+            <div class="model-cards" id="model-cards">
+                <div class="loading">Loading available models...</div>
+            </div>
         </div>
 
         <div class="controls">
@@ -187,17 +253,27 @@
         <div class="plot-container">
             <div id="embedding-plot" class="loading">
                 <p>Loading visualization...</p>
-                <p>If this takes too long, check the debug panel for errors.</p>
+                <p>If this takes too long, check the browser console for any errors.</p>
             </div>
         </div>
 
         <div class="word-info">
             <h3>Word Information</h3>
-            <p>Click on any word in the visualization to see more information.</p>
+            <p>Click on any word in the visualization or use the search below to see more information.</p>
             <div id="selected-word">No word selected</div>
+            
+            <div class="similarity-search">
+                <input type="text" id="similarity-input" placeholder="Enter a word to find similar words...">
+                <button id="similarity-button">Find Similar Words</button>
+            </div>
+            
             <div>
                 <h4>Similar words:</h4>
-                <div id="similar-words">Select a word to see similar words</div>
+                <div id="similar-words">Select or enter a word to see similar words</div>
+            </div>
+            
+            <div class="metadata" id="model-metadata">
+                <!-- Model metadata will be displayed here -->
             </div>
         </div>
     </div>
@@ -207,26 +283,152 @@
     </footer>
 
     <script>
-        // Debug logging function
-        function logDebug(message, isError = false) {
-            const debugPanel = document.getElementById('debug-panel');
-            const logEntry = document.createElement('div');
-            logEntry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
-            if (isError) {
-                logEntry.style.color = 'red';
+        // Global variables
+        let embeddingData = null;
+        let configData = null;
+        let currentModelFile = null;
+
+        // Fetch the config file
+        async function loadConfig() {
+            try {
+                const response = await fetch('config.yaml');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                
+                const yamlText = await response.text();
+                const config = jsyaml.load(yamlText);
+                return config;
+            } catch (error) {
+                console.error("Error loading config:", error);
+                // Return default config
+                return {
+                    ignore: [],
+                    models: [
+                        {
+                            name: "Default Model",
+                            file: "embedding_data.json",
+                            description: "Default word embedding model"
+                        }
+                    ]
+                };
             }
-            debugPanel.appendChild(logEntry);
-            // Scroll to bottom
-            debugPanel.scrollTop = debugPanel.scrollHeight;
         }
 
-        // We'll store the embedding data here
-        let embeddingData = null;
+        // Function to populate model cards
+        function populateModelCards(models) {
+            const container = document.getElementById('model-cards');
+            container.innerHTML = '';
+            
+            if (!models || models.length === 0) {
+                container.innerHTML = '<p>No embedding models found. Please check your configuration.</p>';
+                return;
+            }
+            
+            models.forEach((model, index) => {
+                const card = document.createElement('div');
+                card.className = 'model-card';
+                card.dataset.file = model.file;
+                card.innerHTML = `
+                    <h4>${model.name}</h4>
+                    <p>${model.description || 'No description available'}</p>
+                `;
+                
+                card.addEventListener('click', () => {
+                    // Remove active class from all cards
+                    document.querySelectorAll('.model-card').forEach(c => {
+                        c.classList.remove('active');
+                    });
+                    
+                    // Add active class to selected card
+                    card.classList.add('active');
+                    
+                    // Load the selected model
+                    loadEmbeddingData(model.file);
+                });
+                
+                container.appendChild(card);
+                
+                // Select the first model by default
+                if (index === 0) {
+                    card.classList.add('active');
+                    currentModelFile = model.file;
+                }
+            });
+        }
 
-        // Function to generate sample data for demonstration
+        // Function to display model metadata
+        function displayModelMetadata(metadata) {
+            const container = document.getElementById('model-metadata');
+            
+            if (!metadata) {
+                container.style.display = 'none';
+                return;
+            }
+            
+            container.style.display = 'block';
+            container.innerHTML = '<h4>Model Information:</h4>';
+            
+            const metadataItems = [
+                { label: 'Model Type', value: metadata.modelType || 'Unknown' },
+                { label: 'Vector Dimension', value: metadata.vectorDimension || 'Unknown' },
+                { label: 'Total Words in Model', value: metadata.totalWords || 'Unknown' },
+                { label: 'Words After Filtering', value: metadata.filteredWords || 'Unknown' },
+                { label: 'Words Displayed', value: metadata.displayWords || 'Unknown' },
+                { label: 't-SNE Perplexity', value: metadata.tsnePerplexity || 'Unknown' }
+            ];
+            
+            metadataItems.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'metadata-item';
+                div.innerHTML = `
+                    <span class="metadata-label">${item.label}:</span>
+                    <span>${item.value}</span>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Function to load embedding data
+        async function loadEmbeddingData(filename) {
+            try {
+                document.getElementById('embedding-plot').classList.add('loading');
+                
+                const response = await fetch(filename);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                
+                embeddingData = await response.json();
+                currentModelFile = filename;
+                
+                // Update the UI
+                updateVisualization();
+                displayModelMetadata(embeddingData.metadata);
+                document.getElementById('embedding-plot').classList.remove('loading');
+                
+                console.log(`Loaded embedding data from ${filename} with ${embeddingData.words.length} words`);
+            } catch (error) {
+                console.error(`Error loading embedding data from ${filename}:`, error);
+                document.getElementById('embedding-plot').innerHTML = `
+                    <p>Error loading embedding data. Please check that the file "${filename}" exists and is valid JSON.</p>
+                    <p>Error: ${error.message}</p>
+                `;
+                document.getElementById('embedding-plot').classList.remove('loading');
+                
+                // Use sample data if available
+                if (typeof generateSampleData === 'function') {
+                    console.log('Using sample data instead');
+                    embeddingData = generateSampleData();
+                    updateVisualization();
+                }
+            }
+        }
+
+        // Function to generate sample data
         function generateSampleData() {
-            logDebug("Generating sample data for demonstration");
-            // Sample words and coordinates to demonstrate functionality
+            console.log("Generating sample data for demonstration");
+            // Similar to before, but modified to include metadata
             const sampleWords = [
                 "man", "woman", "king", "queen", "prince", "princess", "boy", "girl",
                 "dog", "cat", "bird", "fish", "horse", "cow", "pig", "sheep",
@@ -286,281 +488,4 @@
             const similarWords = {};
             sampleWords.forEach((word, i) => {
                 // Find the cluster this word belongs to
-                const clusterIndex = clusters.findIndex(cluster => cluster.includes(i));
-                if (clusterIndex !== -1) {
-                    // Get other words from the same cluster
-                    const similars = clusters[clusterIndex]
-                        .filter(idx => idx !== i)
-                        .map(idx => ({
-                            word: sampleWords[idx],
-                            similarity: (0.5 + Math.random() * 0.5).toFixed(3)
-                        }))
-                        .sort((a, b) => b.similarity - a.similarity)
-                        .slice(0, 5);
-                    
-                    similarWords[word] = similars;
-                }
-            });
-            
-            return {
-                words: sampleWords,
-                coordinates: coordinates,
-                frequencies: frequencies,
-                similarWords: similarWords
-            };
-        }
-
-        // Function to load and check JSON data
-        async function loadJsonData() {
-            logDebug("Attempting to load embedding_data.json...");
-            try {
-                const startTime = performance.now();
-                const response = await fetch('embedding_data.json');
-                const endTime = performance.now();
-                logDebug(`Fetch took ${Math.round(endTime - startTime)}ms`);
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                
-                logDebug("JSON file fetched successfully, parsing content...");
-                const data = await response.json();
-                
-                // Validate data structure
-                if (!data.words || !data.coordinates) {
-                    throw new Error("Invalid JSON data structure: missing required fields");
-                }
-                
-                logDebug(`Successfully loaded data for ${data.words.length} words`);
-                logDebug(`First 5 words: ${data.words.slice(0, 5).join(', ')}`);
-                
-                return data;
-            } catch (error) {
-                logDebug(`Error loading JSON data: ${error.message}`, true);
-                logDebug("Make sure embedding_data.json exists and is valid", true);
-                logDebug("If opening directly from file system, CORS issues may prevent loading the file", true);
-                logDebug("Try using a local web server instead", true);
-                return null;
-            }
-        }
-
-        // Function to initialize the visualization
-        async function initVisualization() {
-            logDebug("Initializing visualization...");
-            
-            // Try to load the data
-            const loadedData = await loadJsonData();
-            
-            if (loadedData) {
-                embeddingData = loadedData;
-                logDebug("Using real embedding data");
-            } else {
-                embeddingData = generateSampleData();
-                logDebug("Using sample data for demonstration", true);
-            }
-            
-            // Create the initial plot
-            updateVisualization();
-            
-            // Remove loading indicator
-            document.querySelector('.loading')?.classList.remove('loading');
-            
-            logDebug("Visualization initialized!");
-        }
-
-        // Function to update the visualization based on user parameters
-        function updateVisualization() {
-            if (!embeddingData) {
-                logDebug("No embedding data available", true);
-                return;
-            }
-            
-            logDebug("Updating visualization...");
-            
-            // Get current parameters
-            const numWords = parseInt(document.getElementById('num-words').value);
-            
-            // Limit to the requested number of words
-            const words = embeddingData.words.slice(0, numWords);
-            const coordinates = embeddingData.coordinates.slice(0, numWords);
-            const frequencies = embeddingData.frequencies ? 
-                embeddingData.frequencies.slice(0, numWords) : 
-                words.map(() => 1);
-            
-            // Extract X and Y coordinates
-            const x = coordinates.map(coord => coord[0]);
-            const y = coordinates.map(coord => coord[1]);
-            
-            // Normalize sizes based on frequency
-            const maxFreq = Math.max(...frequencies);
-            const minFreq = Math.min(...frequencies);
-            const sizes = frequencies.map(freq => 
-                10 + ((freq - minFreq) / (maxFreq - minFreq)) * 25
-            );
-            
-            // Create the trace for Plotly
-            const trace = {
-                x: x,
-                y: y,
-                mode: 'markers+text',
-                type: 'scatter',
-                text: words,
-                textposition: 'top center',
-                textfont: {
-                    family: 'Arial, sans-serif',
-                    size: 12,
-                    color: '#333'
-                },
-                marker: {
-                    size: sizes,
-                    opacity: 0.8,
-                    color: '#3498db',
-                    line: {
-                        color: '#2980b9',
-                        width: 1
-                    }
-                },
-                hoverinfo: 'text',
-                hovertext: words.map((word, i) => 
-                    `${word}<br>Frequency: ${frequencies[i]}`
-                )
-            };
-            
-            // Define the layout
-            const layout = {
-                title: 'Word Embedding Map',
-                titlefont: {
-                    size: 24
-                },
-                hovermode: 'closest',
-                xaxis: {
-                    title: 't-SNE dimension 1',
-                    zeroline: false,
-                    showgrid: true,
-                    showline: true
-                },
-                yaxis: {
-                    title: 't-SNE dimension 2',
-                    zeroline: false,
-                    showgrid: true,
-                    showline: true
-                },
-                margin: {
-                    l: 50,
-                    r: 50,
-                    b: 50,
-                    t: 80,
-                    pad: 4
-                }
-            };
-            
-            // Create the plot
-            Plotly.newPlot('embedding-plot', [trace], layout, {responsive: true});
-            logDebug(`Plotted ${words.length} words`);
-            
-            // Add click event for word selection
-            document.getElementById('embedding-plot').on('plotly_click', function(data) {
-                const pointIndex = data.points[0].pointIndex;
-                const selectedWord = words[pointIndex];
-                
-                logDebug(`Selected word: ${selectedWord}`);
-                
-                // Display word information
-                document.getElementById('selected-word').textContent = selectedWord;
-                
-                // Display similar words if available
-                const similarWordsContainer = document.getElementById('similar-words');
-                similarWordsContainer.innerHTML = '';
-                
-                if (embeddingData.similarWords && embeddingData.similarWords[selectedWord]) {
-                    const similarList = embeddingData.similarWords[selectedWord];
-                    logDebug(`Found ${similarList.length} similar words for "${selectedWord}"`);
-                    
-                    similarList.forEach(similar => {
-                        const similarWordElem = document.createElement('div');
-                        similarWordElem.className = 'similar-word';
-                        similarWordElem.textContent = `${similar.word} (${similar.similarity})`;
-                        similarWordsContainer.appendChild(similarWordElem);
-                    });
-                } else {
-                    similarWordsContainer.textContent = 'Similar word data not available';
-                    logDebug(`No similar words found for "${selectedWord}"`, true);
-                }
-            });
-        }
-
-        // Initialize when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            logDebug("Page loaded, initializing application...");
-            
-            // Initialize with default parameters
-            initVisualization();
-            
-            // Event listeners for controls
-            document.getElementById('search-button').addEventListener('click', function() {
-                const searchTerm = document.getElementById('search-input').value.toLowerCase();
-                if (!searchTerm || !embeddingData) {
-                    logDebug("Search error: No search term entered or no embedding data available", true);
-                    return;
-                }
-                
-                logDebug(`Searching for word: "${searchTerm}"`);
-                
-                const wordIndex = embeddingData.words.findIndex(word => 
-                    word.toLowerCase() === searchTerm
-                );
-                
-                if (wordIndex !== -1 && wordIndex < parseInt(document.getElementById('num-words').value)) {
-                    // Get coordinates for the word
-                    const coords = embeddingData.coordinates[wordIndex];
-                    
-                    logDebug(`Found "${searchTerm}" at index ${wordIndex}, coordinates: [${coords[0].toFixed(2)}, ${coords[1].toFixed(2)}]`);
-                    
-                    // Update layout to focus on the word
-                    Plotly.relayout('embedding-plot', {
-                        'xaxis.range': [coords[0] - 5, coords[0] + 5],
-                        'yaxis.range': [coords[1] - 5, coords[1] + 5]
-                    });
-                    
-                    // Simulate click on the word to show info
-                    const selectedWord = embeddingData.words[wordIndex];
-                    document.getElementById('selected-word').textContent = selectedWord;
-                    
-                    // Display similar words if available
-                    const similarWordsContainer = document.getElementById('similar-words');
-                    similarWordsContainer.innerHTML = '';
-                    
-                    if (embeddingData.similarWords && embeddingData.similarWords[selectedWord]) {
-                        const similarList = embeddingData.similarWords[selectedWord];
-                        similarList.forEach(similar => {
-                            const similarWordElem = document.createElement('div');
-                            similarWordElem.className = 'similar-word';
-                            similarWordElem.textContent = `${similar.word} (${similar.similarity})`;
-                            similarWordsContainer.appendChild(similarWordElem);
-                        });
-                    } else {
-                        similarWordsContainer.textContent = 'Similar word data not available';
-                    }
-                } else {
-                    const message = `Word "${searchTerm}" not found among the ${document.getElementById('num-words').value} most frequent words.`;
-                    alert(message);
-                    logDebug(message, true);
-                }
-            });
-            
-            document.getElementById('update-viz').addEventListener('click', function() {
-                logDebug("Updating visualization with new parameters...");
-                updateVisualization();
-            });
-            
-            document.getElementById('reset-view').addEventListener('click', function() {
-                logDebug("Resetting view to show all words");
-                Plotly.relayout('embedding-plot', {
-                    'xaxis.autorange': true,
-                    'yaxis.autorange': true
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+                const cl
