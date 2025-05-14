@@ -105,3 +105,6 @@ models:
 - description: Custom word embedding visualization
   file: test.json
   name: Custom Embedding
+- description: Custom word embedding visualization
+  file: test2.json
+  name: Custom Embedding
