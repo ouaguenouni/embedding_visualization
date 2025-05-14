@@ -108,3 +108,6 @@ models:
 - description: Pre-trained Fasttext Wiki News Subwords 300 from Gensim
   file: fasttext_wiki_news_subwords_300.json
   name: Fasttext Wiki News Subwords 300
+- description: Our custom Study Model
+  file: p2v.json
+  name: P2vec
