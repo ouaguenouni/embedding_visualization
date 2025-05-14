@@ -99,15 +99,9 @@ models:
 - description: Tiny demo model (Tiny Custom)
   file: tiny_custom.json
   name: Tiny Custom
-- description: Pre-trained Glove Twitter 25 from Gensim
-  file: glove_twitter_25.json
-  name: Glove Twitter 25
-- description: Pre-trained Conceptnet Numberbatch 17 06 300 from Gensim
-  file: conceptnet_numberbatch_17_06_300.json
-  name: Conceptnet Numberbatch 17 06 300
-- description: Pre-trained Fasttext Wiki News Subwords 300 from Gensim
-  file: fasttext_wiki_news_subwords_300.json
-  name: Fasttext Wiki News Subwords 300
 - description: Our custom Study Model
   file: p2v.json
   name: P2vec
+- description: Custom word embedding visualization
+  file: test.json
+  name: Custom Embedding
